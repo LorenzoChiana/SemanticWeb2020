@@ -1,0 +1,92 @@
+\documentclass[12pt,a4paper]{book}
+
+
+               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+               %    Scelta dei package da usare     %
+               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[italian]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{deistesi}
+\usepackage{fancyhdr}
+
+               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+               % Scelta delle dimensioni della pagina %
+               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\textwidth}{13.5cm}
+\setlength{\textheight}{19cm}
+\setlength{\footskip}{3cm}
+
+
+
+
+               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+               %  Informazioni generali sulla Tesi  %
+               %    da usare nell'intestazione      %
+               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\titolo{FoodOn}
+\laureando{Lorenzo Chiana}
+\annoaccademico{2019--2020}
+\facolta{CAMPUS DI CESENA\\SCUOLA DI INGEGNERIA}
+\corsodilaurea{Ingegneria e Scienze Informatiche}
+\corso{Web Semantico}
+%\relatore{Alessandro Ricci}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% inizio prefazione
+%
+% pagina del titolo, indice, sommario
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\frontmatter
+\maketitle
+\pagestyle{plain} 
+\tableofcontents
+%``testo''
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% inizio corpo del documento
+%
+% sequenze dei vari capitoli
+% è consigliato mantenere una struttura logica ben definita per separare i vari capitoli
+% si consiglia di reificare tale struttura fisicamente sul file system
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mainmatter
+
+% stile della pagina
+\pagestyle{fancy} \fancyhead[LE,RO]{\bfseries\thepage}
+
+%\input{capitolo1.tex}
+
+% inclusione dei capitoli
+%\input{capitolo2.tex}
+
+%\appendix
+
+% inclusione dei capitoli
+%\input{./Capitolo2/capitolo2.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% inizio parte finale del documento
+%
+% eventuali appendici, bibliografia obbligatoria,
+% eventuale lista delle tabelle e delle figure (nel caso decommentare la riga con i comandi \listoffigures e \listoftables)
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+
+
+%\input{./Appendice/appendice.tex}
+% \input{./Bibliografia/bibliografia.tex}
+
+
+%\listoffigures
+%\listoftables
+
+% chiusura del documento
+\end{document}
