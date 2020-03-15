@@ -1,52 +1,13 @@
-\chapter{Analisi del problema e descrizione della soluzione proposta}
+\chapter{Introduzione}
 
-\section{Analisi del problema}
+\section{Cause}
 
-\index{Analisi del problema}
+\index{Cause}
 
-Questo primo assignment prevede la progettazione e la creazione di un piano cartesiano su cui N particelle interagiscono tra di loro con forza repulsiva.
-Per tanto vi è l'esigenza di calcolare la forza repulsiva che ogni particella ha rispetto alle altre ed aggiornare la sua posizione.\\
-Il tutto deve essere rappresentato e visualizzato su una GUI che permette di lanciare e fermare la suddetta simulazione.
-Il punto principale di questa esercitazione consiste nel riuscire a progettare la simulazione basandosi su un modello di concorrenza multi-threaded.\\
+Al giorno d'oggi la costruzione di reti progettate per la condivisione ad alta capacità di dati e il fatto che la comunicazione e la diffusione di concetti viene maggiormente veicolata attraverso l'uso di computer e di tecnologie simili, hanno permesso lo scambio sempre più crescente di dati governativi e commerciali mettendo, però, in luce un problema fondamentale: la molteplicità di lingue e di dizionari di dati.\\
+Questo problema comporta un blocco del contenuto delle informazioni esistenti e connesse ad Internet e la mancanza di una lingua franca digitale è evidente nel dominio del cibo, poiché i materiali viaggiano dalla loro provenienza, agricola o meno, ai consumatori attraverso catene di processo e di distribuzione.\\
+Un vocabolario bene definito e gerarchico, con relazioni logiche, ossia un'ontologia, è necessario per aiutare ad armonizzare quei dati che abbracciano i settori della sicurezza, qualità, produzione e distribuzione alimentare e, di conseguenza, della salute e convenienza dei consumatori.
 
-Le problematiche che sopraggiungono con questo modello sono: prima di tutto capire e analizzare quali possono essere i compiti che i threads devono svolgere; in secondo luogo gestire la sincronizzazione e l'eventuale mutua esclusione dei vari threads che si andranno ad utilizzare.
+\section{FoodOn}
 
-\section{Soluzione proposta}
-
-\index{Soluzione proposta}
-
-\subsection{Pattern MVC}
-
-Il programma è stato sviluppato seguendo il pattern MVC:
-\begin{itemize}
-\item Model: si occupa della gestione della logica delle particelle;
-\item View: rappresenta graficamente le particelle ed il loro movimento sul piano cartesiano;
-\item Controller: incapsula il comportamento dell'applicazione gestendo la sincronizzazione della logica delle particelle e la loro rappresentazione sul piano.
-\end{itemize}
-
-\subsection{Modello multi-threaded}
-
-Il programma è stato decomposto in N thread-worker ed un thread-master. Quest'ultimo, ad ogni step, aggiorna l'elenco delle particelle con le nuove posizioni appena calcolate dai thread-worker e notifica alla view tale cambiamento.\\
-I thread-worker hanno il compito di calcolare i dati che permettono di aggiornare la posizione delle particella.\\
-
-\medskip
-A questo scopo sono stati utilizzati due semafori: 
-\begin{enumerate}
-\item \textbf{masterTurn}: può assumere solamente due valori. Il thread master deve acquisirlo per fare la sua computazione. Il permesso verrà rilasciato dall'ultimo thread worker che ha terminato la sua esecuzione.
-\item \textbf{workerTurn}: fornisce tanti permessi quante sono le particelle presenti. \`E il thread master che rilascia questi permessi al termine del suo ciclo di computazione.
-\end{enumerate}
-
-Le informazioni relative ai diversi elementi sono mantenute all'interno di una blocking-queue dalla quale ogni worker-thread preleva una particella, calcola i nuovi valori e li aggiunge ad un vettore temporaneo che verrà usato, successivamente, dal master per aggiornare l'elenco contenente i valori delle nuove particelle.
-
-Per prelevare ogni particella il worker-thread richiede un accesso al workerTurn.
-In questo modo, quando quest'ultimo avrà esaurito gli accessi disponibili, significherà che tutte le particelle sono state calcolate ed il master può procedere con il suo lavoro.
-
-\subsection{Petri Net}
-
-\begin{figure}[h]
-    {\begin{center}\includegraphics[width=10cm]{FIGURE/petrinet.jpg}\end{center}}
-\caption{Petri Net con tre thread \label{petrinet}}
-\end{figure}
-
-Allo stato iniziale il master-thread possiede il controllo del flusso di esecuzione. Al termine della computazione ne notifica il successo ai worker-threads dando loro la possibilità di procedere con il calcolo.\\
-Successivamente, il sistema dovrà attendere il completamento dell'esecuzione degli N worker-threads per eseguire la transazione t0 e restituire la parola al master-thread. 
+\index{FoodOn}
