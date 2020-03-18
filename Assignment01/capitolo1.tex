@@ -10,17 +10,17 @@ Nello specifico, in ambito agricolo e gastronomico, i dati generati da queste te
 Altro esempio le questioni legate alla sicurezza degli alimenti, all'autenticità e ai conflitti derivanti dalla protezione dei marchi e tutta la logistica sull'approvvigionamento e sulla distribuzione degli alimenti locali contro multinazionali possono e vengono analizzate anche con l'aiuto di set di dati e modelli specifici per gli alimenti.\\
 Questo scambio di dati sempre più crescente ha messo in luce un problema fondamentale: pochi sottodomini terminologici sono stati standardizzati un po' in tutti i settori.
 La pletora di dizionari alimentari mantiene invisibili le informazioni sugli alimenti a causa della mancanza di interoperabilità, influenzando di conseguenza la tracciabilità degli alimenti, dei patogeni di origine alimentare, dei contaminanti e, più in generale, della qualità degli alimenti stessi.
-In passato si è tentato di creare vocabolari alimentari applicabili a livello internazionale, ma ostacoli sia tecnici che linguistici hanno scoraggiato un deposito globale per la catalogazione degli alimenti regionali e della loro composizione.\\
+In passato si è già tentato di creare vocabolari alimentari applicabili a livello internazionale, ma ostacoli sia tecnici che linguistici hanno scoraggiato un deposito globale per la catalogazione degli alimenti regionali e della loro composizione.\\
 %la costruzione di reti progettate per la condivisione ad alta capacità di dati e il fatto che la comunicazione e la diffusione di concetti viene maggiormente veicolata attraverso l'uso di computer e di tecnologie simili, hanno permesso lo scambio sempre più crescente di dati governativi e commerciali mettendo, però, in luce un problema fondamentale: la molteplicità di lingue e di dizionari di dati.\\
 %Questo problema comporta un blocco del contenuto delle informazioni esistenti e connesse ad Internet e la mancanza di una lingua franca digitale è evidente nel dominio del cibo, poiché i materiali viaggiano dalla loro provenienza, agricola o meno, ai consumatori attraverso catene di processo e di distribuzione.\\
 La combinazione dell'attuale infrastruttura Internet e dei progressi del web semantico rende ora interessanti soluzioni di tipo ontologiche.
-L'ontologia fornisce una teoria formale per un dominio di indagine che specifica il significato dei termini all'interno di un vocabolario e consiste in una struttura tassonomica gerarchica e in dichiarazioni (detti assiomi) su come le entità all'interno di un dominio sono correlate.
-Termini appropriati possono essere identificati e distinti da etichette ontologiche e sinonimi che includono nomi in multilingua o nomi specifici della regione, nonché identificatori e definizioni univoci accessibili a livello globale, evitando così l'uso di vocabolari ambigui.
 
 \section{Ontologie e cibo}
 
 \index{Ontologie e cibo}
 
+Un'ontologia fornisce una teoria formale per un dominio di indagine che specifica il significato dei termini all'interno di un vocabolario e consiste in una struttura tassonomica gerarchica e suddivisa in assiomi che permettono di capire come le entità all'interno di un dominio sono correlate.
+Termini appropriati possono essere identificati e distinti da etichette ontologiche e sinonimi che includono nomi in multilingua o nomi specifici della regione, nonché identificatori e definizioni univoci accessibili a livello globale, evitando così l'uso di vocabolari ambigui.
 Le ontologie sono inoltre in grado di accogliere più gerarchie, spesso sotto forma di tassonomie, che possono agire con sfaccettature a maggior o minor livello di dettaglio mentre si naviga tra le gerarchie stesse.
 Un prodotto alimentare, ad esempio, può essere collegato a varie categorie di prodotti alimentari nazionali o internazionali in una sfaccettatura ``tipo prodotto", così come gli ingredienti per mezzo di una sfaccettatura gerarchica di animali e/o piante ``fonte di cibo".\\
 Le ontologie ben progettate permettono di riutilizzare termini di altre ontologie già consolidate al fine di eliminare duplicati.
@@ -33,9 +33,17 @@ Inoltre un'ontologia consente di migliorare un termine del vocabolario attravers
 
 \href{https://foodon.org}{FoodOn} è un progetto guidato dal consorzio Hsiao Lab per costruire un'ontologia globale \textit{farm-to-fork}, ossia un vocabolario per la descrizione alimentare standardizzato per supportare la ricerca, le applicazioni di consumo e quelle industriali.
 Al consorzio si sono poi rapidamente unite figure provenienti dall'Università della British Columbia, dal British Columbia Center for Disease Control Public Health Laboratory e dalla comunità \href{http://obofoundry.org}{OBO Foundry} avendo esigenze parallele per l'agricoltura, l'analisi nutrizionale e la ricerca sulle scienze alimentari.
-La proposta di FoodOn si basa sulla condivisione e promuove uno standard che nasce dalla congiunzione di domini ontologici coordinati e supportati dalla comunità, coinvolgendo tassonomie vegetali e animali, nomi comuni, anatomia e terminologia di descrizione di alimenti per umani e animali domestici, riducendo così il costo e il carico di lavoro su ogni singolo implementatore.
+La proposta di FoodOn si basa sulla condivisione e promuove uno standard che nasce dalla congiunzione di domini ontologici coordinati e supportati dalla comunità, coinvolgendo tassonomie vegetali e animali, nomi comuni, anatomia e terminologia di descrizione di alimenti per umani e animali domestici, riducendo così il costo e il carico di lavoro per chiunque implementi tale standard.
 Il vocabolario di FoodOn deriva dalla trasformazione di LanguaL\footnote{LanguaL, che sta per ``\textbf{Langua aL}imentaria", è un dizionario di indicizzazione alimentare avviato alla fine degli anni '70 dal Center for Food Safety and Applied Nutrition (CFSAN) della Food and Drug Administration degli Stati Uniti grazie alla cooperazione di specialisti in tecnologie alimentari, scienze dell'informazione e nutrizione.} in un vocabolario OWL che fornisce interoperabilità al sistema, controlla di qualità e intelligenza basata sul software.
 
-\section{Finalità}
+\section{Obiettivi}
 
-\index{Finalità}
+\index{Obiettivi}
+I vari obiettivi che questo progetto si pone si possono già desumere dalle sezioni precedenti e possono essere riassunte e raggruppate in:
+\begin{itemize}
+\item promuovere un vocabolario di descrizione alimentare che la ricerca e le applicazioni di consumo e industriali possono riutilizzare;
+\item creare uno standard che coinvolge tassonomie vegetali e animali, nomi comuni, anatomia e terminologia di descrizione di alimenti per umani e animali domestici;
+\item creare un'ontologia che permetta di armonizzare i dati che abbracciano molteplici settori, dalla sicurezza alimentare alla salute e convenienza dei consumatori;
+\item interoperabilità con altre ontologie;
+\item indipendenza dalla lingua e dalla cultura.
+\end{itemize}
