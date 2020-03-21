@@ -22,9 +22,91 @@ L'ultima versione può anche essere esplorata tramite servizi di ricerca ontologi
   
 \subsection{FoodOn e LanguaL}
 \index{FoodOn e LanguaL}
+Come già accennato gran parte del vocabolario principale di FoodOn deriva dalla trasformazione di LanguaL, un dizionario di indicizzazione degli alimenti maturo e popolare.
+In questa sezione si affronteranno le varie similitudini e differenze tra il nuovo e il vecchio progetto.
+\subsubsection{Similitudini}
+\index{Similitudini}
+\subsubsection{Differenze}
+\index{Differenze}
 
 \section{Struttura}
 \index{Struttura}
+Il progetto è compatibile con Basic Formal Ontology (BFO), il che significa che tutte le classi fornite da FoodOn sono organizzate in classi BFO.
+In realtà FoodOn include BFO, quindi quando si esplora l'ontologia in maniera top-down è un po' più complicato notare dove finisce BFO e dove inizino i termini di FoodOn.
+%Le ontologie compatibili con BFO sono disponibili su \href{http://obofoundry.org/}{\textit{\underline{OBOFoundry.org}}}
+Di seguito saranno mostrate le principali classi di FoodOn.\\
+
+
+``\textbf{food material}" è un tipo di ``\textbf{environmental material}" che è stato posizionato sotto ``\textbf{fiat object part}" perché il confine tra materiali ambientali adiacenti può essere difficile da definire fisicamente e questo si ripercuote anche su parti commestibili e non di entità alimentari. \textit{(Figura \ref{fig:food_material})}
+\begin{figure}[!h] {
+	\begin{center}
+		\includegraphics[width=12cm]{FIGURE/food_material-768x658.png}
+	\end{center}
+}
+\caption{food material}
+\label{fig:food_material}
+\end{figure}
+
+\newpage
+
+Altre classi chiave di FoodOn come quelle legate a contenitori di cibo, involucri alimentari, mezzi di imballaggio, struttura della pianta, gruppi di consumatori e sostanze chimiche costituenti si trovano sotto la classe ``\textbf{material entity}". \textit{(Figura \ref{fig:material_entity})}
+\begin{figure}[!h] {
+	\begin{center}
+		\includegraphics[width=12cm]{FIGURE/foodon_facets2.png}
+	\end{center}
+}
+\caption{material entity}
+\label{fig:material_entity}
+\end{figure}
+
+\newpage
+
+La gerarchia ``\textbf{food product type}" contiene la principale gerarchia di FoodOn: ``\textbf{foodon product type}". ``\textit{food product type}" contiene oltre 9600 prodotti alimentari, nonché schemi di classificazione alimentare internazionale, europea e americana di livello superiore che verranno infine associati alle categorie di ``\textit{foodon product type}". \textit{(Figur \ref{fig:food_product_type})}
+\begin{figure}[!h] {
+	\begin{center}
+		\includegraphics[width=10cm]{FIGURE/food_product_type.png}
+	\end{center}
+}
+\caption{food product type}
+\label{fig:food_product_type}
+\end{figure}
+
+\newpage
+
+La classe ``\textbf{food transformation process}" è posizionata sotto la classe BFO ``\textbf{process}". Alcuni processi di FoodOn possono essere multiuso, ad esempio, il congelamento può essere per la conservazione degli alimenti o per produrre un effetto come nel gelato. Altri sono specifici per la conservazione o altri obiettivi del processo. \textit{(Figur \ref{fig:food_transformation_process})}
+\begin{figure}[!h] {
+	\begin{center}
+		\includegraphics[width=10cm]{FIGURE/food_transformation_process.png}
+	\end{center}
+}
+\caption{food transformation process}
+\label{fig:food_transformation_process}
+\end{figure}
+
+\newpage
+
+Sotto la classe ``\textbf{quality}" si trovano le qualità osservabili del cibo come, ad esempio, la consistenza della carne del pesce o il colore della polpa o della buccia di un frutto. \textit{(Figur \ref{fig:foodon_quality})}\newline NB: C'è anche una classe BFO ``quality": le due non sono ancora unificate ontologicamente.
+\begin{figure}[!h] {
+	\begin{center}
+		\includegraphics[width=10cm]{FIGURE/foodon_quality.png}
+	\end{center}
+}
+\caption{quality}
+\label{fig:foodon_quality}
+\end{figure}
+
+\newpage
+
+Alcune categorie di informazioni che riguardano gli alimenti e che di solito non sono viste direttamente come qualità di un prodotto alimentare, ma piuttosto sono informazioni più legate a fatti legislativi o affermazioni del produttore sull'articolo, di trovano in ``\textbf{information content entity}". \textit{(Figur \ref{fig:information_content_entity})}
+\begin{figure}[!h] {
+	\begin{center}
+		\includegraphics[width=10cm]{FIGURE/information_content_entity.png}
+	\end{center}
+}
+\caption{information content entity}
+\label{fig:information_content_entity}
+\end{figure}
+    
 \section{Funzionalità}
 \index{Funzionalità}
 
