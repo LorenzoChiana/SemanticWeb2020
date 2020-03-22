@@ -22,14 +22,14 @@ L'ultima versione può anche essere esplorata tramite servizi di ricerca ontologi
   
 \subsection{FoodOn e LanguaL}
 \index{FoodOn e LanguaL}
-Come già accennato gran parte del vocabolario principale di FoodOn deriva dalla trasformazione di LanguaL, un dizionario di indicizzazione degli alimenti maturo e popolare.
+Come già accennato gran parte del vocabolario principale di FoodOn deriva da LanguaL, un dizionario di indicizzazione degli alimenti maturo e popolare.
 In questa sezione si affronteranno le varie similitudini e differenze tra il nuovo e il vecchio progetto.
 \subsubsection{Similitudini}
 \index{Similitudini}
-Come LanguaL, FoodOn fa la stessa distinzione tra le piante di origine alimentare e gli organismi animali che si trovano in LanguaL Facet B e gli schemi di categorizzazione degli alimenti degli enti governativi in LanguaL Facet B i quali sono tutti copiati termine per termine in FoodOn.
-Sotto il ramo ``food product type" c'è una nuova gerarchia ``foodon food product" che è una copia molto approssimativa del ramo prodotti alimentari del FDA Code of Federal Regulations (CFR), ma riorganizzata per essere la più ontologicamente ``pura".
-La maggior parte degli articoli di ``foodon food product" sono collegati direttamente o per eredità tramite un riferimento ``member of" ad una categoria CFR.
-L'intera LanguaL Facet B è duplicata sotto il ramo ``food source" di FoodOn ed un riferimento a un organismo in Facet B non richiede che tale organismo svolga un ruolo alimentare.
+Come LanguaL, FoodOn fa la stessa distinzione tra le piante di origine alimentare e gli organismi animali che si trovano nella Facet B di LanguaL e gli schemi di categorizzazione degli alimenti delle varie aziende alimentari sempre all'interno della stessa Facet i quali sono tutti copiati termine per termine in FoodOn.
+Sotto il ramo ``food product type" c'è una nuova gerarchia ``foodon food product" che è una copia molto approssimativa del ramo relativo ai prodotti alimentari del FDA Code of Federal Regulations (CFR), ma riorganizzata per essere più ontologicamente ``pura".
+La maggior parte degli articoli di ``foodon food product" sono collegati direttamente o tramite eredità attraverso un riferimento ``member of" ad una categoria CFR.
+L'intera Facet B di LanguaL è duplicata sotto il ramo ``food source" di FoodOn ed un riferimento a un organismo nella Facet B non richiede che tale organismo svolga un ruolo alimentare.
 Di conseguenza si può fare un riferimento a \textit{Bovini} attraverso assiomi che possono essere completamente dedicati alle indagini epidemiologiche sulle malattie degli zoccoli senza implicare alcuna conversazione sui \textit{Bovini} come cibo.
 
 
@@ -42,13 +42,13 @@ In primo luogo in LanguaL esistono casi in cui sono presenti termini del tipo ``
 In FoodOn si preferisce non menzionare aspetti se non sono pertinenti, ciò significa che se un termine è rilevante viene utilizzato, altrimenti no.
 In altre parole se non si sa se un alimento può essere descritto o meno con un particolare termine, ma si sa che la categoria genitore è pertinente, allora si fa riferimento alla categoria genitore.
 Per descrivere un alimento in LanguaL si avrà, ad esempio, ``Taglio di carne non noto", invece in FoodOn ``Taglio di carne".
-Ciò permette a un ragionatore di sapere che l'entità descritta è un \textit{taglio di carne}, il che consente che una sottoclasse di \textit{ taglio di carne} sia pertinente.
+Ciò permette a un ragionatore di sapere che l'entità descritta è un \textit{taglio di carne}, il che consente che una qualsiasi sottoclasse di \textit{ taglio di carne} sia pertinente.
 
-LanguaL per indicare l'ingrediente principale di qualsiasi alimento indicizzato utilizza ``food source" e per indicare gli ingredienti secondari ``treatment applied > ingredient added".
-Grazie alle ontologie OWL che permettono di usare le proprietà degli oggetti per descrivere gli ingredienti primari e secondari, FoodOn può utilizzare relazioni del tipo ``has ingredient" e ``has substance added" per fare ciò.
+In più LanguaL, per indicare l'ingrediente principale di qualsiasi alimento indicizzato, utilizza ``food source" e per indicare gli ingredienti secondari ``treatment applied $>$ ingredient added".
+FoodOn, grazie alle ontologie OWL che permettono di usare le proprietà degli oggetti per descrivere gli ingredienti primari e secondari, può utilizzare relazioni del tipo ``has ingredient" e ``has substance added".
 
-Per regolamentare LanguaL, FoodOn ha conservato una serie di contenuti aggiunti al cibo.
-Tuttavia le relazioni ``has substance added" di un prodotto alimentare potrebbero contenere delle percentuali o delle proporzioni, il che avvicini gli alimenti composti a una ricetta o a una descrizione dell'etichetta del prodotto.
+Invece, per regolamentare LanguaL, FoodOn ha conservato una serie di contenuti aggiunti al cibo.
+Tuttavia le relazioni ``has substance added" di un prodotto alimentare potrebbero contenere delle percentuali o delle proporzioni, il che avvicina gli alimenti composti a una ricetta o a una descrizione dell'etichetta del prodotto.
 Come LanguaL, anche FoodOn non affronta ancora la descrizione delle ricette e ciò richiede un vocabolario di trasformazione alimentare più ampio.
 
 Infine, la maggior parte delle voci dell'elenco degli additivi alimentari di LanguaL sono state convertite in voci ChEBI\footnote{Chemical Entities of Biological Interest (ChEBI) è un database e ontologia riguardante entità molecolari focalizzate su composti chimici ``piccoli", che fa parte di Open Biomedical Ontologies.} equivalenti.
