@@ -113,12 +113,16 @@ Le eccezioni accennate precedentemente riguardano al fatto che le ontologie di O
 Riprendendo la \textit{figura \ref{tab1}} c'è da chiarire che molte delle relazioni provengono dall'OBO Foundry's Relation Ontology il che porta restrizioni al dominio delle relazioni OWL e al codice stesso.
 In FoodOn queste relazioni sono combinate quelle di Basic Formal Ontology.
 Ciò consente a un ragionatore di applicare un riferimento adeguato a processi, qualità, ruoli ed entità informative.\\
-Esempio:\\
-``\textit{`hen (food source)' : `chicken (food source)' and (`has quality' some `female organism') and (`has quality' some `adult organism')}"\\
+Esempio:
+\begin{center}
+``\textit{`hen (food source)' : `chicken (food source)' and (`has quality' some `female organism') and (`has quality' some `adult organism')}"
+\end{center}
 ciò porta ad un contraddizione perché la relazione `\textit{has quality}' in BFO consente solo qualità nel suo range, ovvero sul proprio lato destro, e sia `\textit{female organism}' che `\textit{adult organism}' sono caratteristiche di un'entità materiale essendo un tipo di `\textit{independent continuant}' il quale è disgiunto rispetto alle qualità.
 Più semplicemente, le qualità sono caratteristiche delle entità materiali ma non possono essere esse stesse entità materiali.
-Quindi la definizione può essere risolta affermando direttamente:\\
+Quindi la definizione può essere risolta affermando direttamente:
+\begin{center}
 ``\textit{`hen (food source)' : `chicken (food source)' and `female organism' and `adult organism'}"
+\end{center}
 
 Per l'incorporazione di nuovi contenuti ontologici sarebbe necessaria una certa padronanza della tecnologia Web Semantico, inclusa la conoscenza di OWL e del linguaggio di query SPARQL.
 Tuttavia viene incoraggiato il riutilizzo dell'ontologia anche per chi non possiede una formazione completa nell'ambito del Web Semantico fornendo fogli di calcoli o modelli di database personalizzabili tramite portali web.
@@ -202,7 +206,42 @@ Alcune categorie di informazioni che riguardano gli alimenti e che di solito non
 \caption{information content entity}
 \label{fig:information_content_entity}
 \end{figure}
-    
+
+\newpage    
 \section{Relazioni}
 \index{Relazioni}
 
+FoodOn utilizza le seguenti relazioni:
+\begin{itemize}
+\item ``\textbf{has part}", utilizzato tra entità dello stesso tipo, ad esempio:
+\begin{itemize}
+\item tra entità anatomiche: \textit{``albumen" is part of an egg}
+\item tra parti prescrittive: \textit{``a pie has a crust and a filling"}
+\end{itemize}
+\item ``\textbf{has substance added}", proprietà di un oggetto che può essere applicata a una qualsiasi sostanza (chimica, fisica, alimentare, ...). Si differenzia da ``has part" perché la sostanza aggiunta potrebbe non essere individuabile nella miscela in un secondo momento.
+\item ``\textbf{has ingredient}", sotto-proprietà di ``has substance added" pertinente solo a un dominio e intervallo alimentare. È usato per riferirsi a una sostanza alimentare aggiunta a un prodotto alimentare.
+\item X ``\textbf{member of}" Y, utilizzato per associare un prodotto alimentare a una categoria di tipo prodotto che non rientra nel ramo ``foodon product type".
+\item X ``\textbf{develops from part of}" Y può essere usato quando X è una struttura cellulare che subisce una crescita biologica. La relazione non implica l'eliminazione di Y, infatti molte piante generano cibo da raccogliere durante la stagione di crescita o comunque per diversi anni. In FoodOn, questo viene applicato principalmente a frutta, semi e verdure come le zucchine raccolte dalle piante.
+\item Y ``\textbf{produced by}" X viene utilizzato quando Y è una sostanza che non subisce una crescita biologica, come, ad esempio, il latte.
+\item X ``\textbf{derives from}" Y viene utilizzato quando non sono ancora disponibili o curati rapporti più specifici.
+Spesso funge da scorciatoia per un modello di processo più elaborato, se presente.
+\item X ``\textbf{has food substance analog}" Y consente di collegare due prodotti quando hanno proprietà fenotipiche o ruoli di processo simili.
+\end{itemize}
+
+\begin{figure}[!h] {
+	\begin{center}
+		\includegraphics[width=14cm]{FIGURE/figure-3-apple.jpg}
+	\end{center}
+}
+\caption{Diagramma che esplora la fonte di cibo ``melo" nelle relazioni tra prodotti alimentari. Si possono notare tre diversi tipi di prodotti correlati alle mele mostrati in relazione a un organismo di origine alimentare, il melo, e vari processi di preparazione e confezionamento degli alimenti.}
+\label{fig:apple_dia}
+\end{figure}
+
+\begin{figure}[!h] {
+	\begin{center}
+		\includegraphics[width=14cm]{FIGURE/FOODON_schema_draw_io_-1.png}
+	\end{center}
+}
+\caption{Schema mostra alcuni altri tipi di prodotti alimentari e le varie relazioni che FoodOn impiega per collegarli a organismi di origine alimentare.}
+\label{fig:prod_al}
+\end{figure}
