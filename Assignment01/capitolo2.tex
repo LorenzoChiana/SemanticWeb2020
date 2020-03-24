@@ -82,6 +82,48 @@ Inoltre, i termini relativi alle fonti alimentari di FoodOn relativi alle malatt
 
 \subsection{Riutilizzo dell'ontologia}
 \index{Riutilizzo dell'ontologia}
+Uno degli obiettivi di FoodOn è quello di diventare uno standard ben documentato, curato e stabile e
+grazie alla sua appartenenza alla OBO Foundary consente l'accesso a otologie che coprono domini come: demografia dei consumi, composizione agricola e antimicrobici, tassonomie e fenotipi delle malattie. \textit{(Figura \ref{fig:reuse1})}
+\begin{figure}[!h] {
+	\begin{center}
+		\includegraphics[width=12cm]{FIGURE/foodon_reuse.jpg}
+	\end{center}
+}
+\caption{FoodOn riutilizza i termini di ontologie di OBOFoundry.org}
+\label{fig:reuse1}
+\end{figure}
+
+FoodOn non funge solo da hub generalista che si interfaccia con oltologie di dominio più specialistiche che coinvolgono la modellazione delle scienze alimentari, ma mira a coprire i prodotti alimentari e le ampie fasi di trasformazione degli alimenti.
+Ciò lo si può ben vedere dalla 
+\textit{figura \ref{fig:reuse2}}.
+\begin{figure}[!h] {
+	\begin{center}
+		\includegraphics[width=12cm]{FIGURE/FoodOn_topical_branches.jpg}
+	\end{center}
+}
+\caption{Visualizzazione di un albero FoodOn di 15 rami}
+\label{fig:reuse2}
+\end{figure}
+
+Il riutilizzo dei termini fra le varie ontologie consente di condividere lo sforzo di fornire un vocabolario standardizzato.
+Per questo OBOFoundary incoraggia, con alcune eccezioni, ogni ontologia a riutilizzare i termini di altri dove applicabile.
+Nel caso di FoodOn, sono stati sostituiti circa 600 termini di sostanze chimiche di LanguaL con identificatori chimici ontologici di ChEBI.
+Le eccezioni accennate precedentemente riguardano al fatto che le ontologie di OBOFoundary devono rispettare una determinata struttura tecnica generale che riguarda la le migliori pratiche per la cura delle versioni dei file delle ontologie, gli URL permanenti per i termini e gli schemi utilizzati per annotare le sostituzioni di termini deprecati in modo che il contenuto del database possa essere aggiornato senza problemi.
+
+Riprendendo la \textit{figura \ref{tab1}} c'è da chiarire che molte delle relazioni provengono dall'OBO Foundry's Relation Ontology il che porta restrizioni al dominio delle relazioni OWL e al codice stesso.
+In FoodOn queste relazioni sono combinate quelle di Basic Formal Ontology.
+Ciò consente a un ragionatore di applicare un riferimento adeguato a processi, qualità, ruoli ed entità informative.\\
+Esempio:\\
+``\textit{`hen (food source)' : `chicken (food source)' and (`has quality' some `female organism') and (`has quality' some `adult organism')}"\\
+ciò porta ad un contraddizione perché la relazione `\textit{has quality}' in BFO consente solo qualità nel suo range, ovvero sul proprio lato destro, e sia `\textit{female organism}' che `\textit{adult organism}' sono caratteristiche di un'entità materiale essendo un tipo di `\textit{independent continuant}' il quale è disgiunto rispetto alle qualità.
+Più semplicemente, le qualità sono caratteristiche delle entità materiali ma non possono essere esse stesse entità materiali.
+Quindi la definizione può essere risolta affermando direttamente:\\
+``\textit{`hen (food source)' : `chicken (food source)' and `female organism' and `adult organism'}"
+
+Per l'incorporazione di nuovi contenuti ontologici sarebbe necessaria una certa padronanza della tecnologia Web Semantico, inclusa la conoscenza di OWL e del linguaggio di query SPARQL.
+Tuttavia viene incoraggiato il riutilizzo dell'ontologia anche per chi non possiede una formazione completa nell'ambito del Web Semantico fornendo fogli di calcoli o modelli di database personalizzabili tramite portali web.
+Inoltre, Hsiao Lab sta sviluppando uno strumento che trasforma i contenuti ontologici di markup in standard, forniti sia in una form web che in versione tabulare o json per l'implementazione nei sistemi di gestione e scambio dati.
+\newpage
 
 \section{Struttura}
 \index{Struttura}
@@ -115,7 +157,7 @@ Altre classi chiave di FoodOn come quelle legate a contenitori di cibo, involucr
 
 \newpage
 
-La gerarchia ``\textbf{food product type}" contiene la principale gerarchia di FoodOn: ``\textbf{foodon product type}". ``\textit{food product type}" contiene oltre 9600 prodotti alimentari, nonché schemi di classificazione alimentare internazionale, europea e americana di livello superiore che verranno infine associati alle categorie di ``\textit{foodon product type}". \textit{(Figur \ref{fig:food_product_type})}
+La gerarchia ``\textbf{food product type}" contiene la principale gerarchia di FoodOn: ``\textbf{foodon product type}". ``\textit{food product type}" contiene oltre 9600 prodotti alimentari, nonché schemi di classificazione alimentare internazionale, europea e americana di livello superiore che verranno infine associati alle categorie di ``\textit{foodon product type}". \textit{(Figura \ref{fig:food_product_type})}
 \begin{figure}[!h] {
 	\begin{center}
 		\includegraphics[width=10cm]{FIGURE/food_product_type.png}
@@ -127,7 +169,7 @@ La gerarchia ``\textbf{food product type}" contiene la principale gerarchia di F
 
 \newpage
 
-La classe ``\textbf{food transformation process}" è posizionata sotto la classe BFO ``\textbf{process}". Alcuni processi di FoodOn possono essere multiuso, ad esempio, il congelamento può essere per la conservazione degli alimenti o per produrre un effetto come nel gelato. Altri sono specifici per la conservazione o altri obiettivi del processo. \textit{(Figur \ref{fig:food_transformation_process})}
+La classe ``\textbf{food transformation process}" è posizionata sotto la classe BFO ``\textbf{process}". Alcuni processi di FoodOn possono essere multiuso, ad esempio, il congelamento può essere per la conservazione degli alimenti o per produrre un effetto come nel gelato. Altri sono specifici per la conservazione o altri obiettivi del processo. \textit{(Figura \ref{fig:food_transformation_process})}
 \begin{figure}[!h] {
 	\begin{center}
 		\includegraphics[width=10cm]{FIGURE/food_transformation_process.png}
@@ -161,6 +203,6 @@ Alcune categorie di informazioni che riguardano gli alimenti e che di solito non
 \label{fig:information_content_entity}
 \end{figure}
     
-\section{Funzionalità}
-\index{Funzionalità}
+\section{Relazioni}
+\index{Relazioni}
 
