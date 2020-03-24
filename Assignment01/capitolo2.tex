@@ -71,7 +71,10 @@ Ad esempio: \textit{bacca} è un parte, \textit{cespuglio} è l'intero; \textit{me
 Inoltre quelle parti di un organismo non sono sempre presenti o commestibili.
 La faccetta ``\textit{part of plant or animal}" di LanguaL è definita come parte anatomica della pianta o animale da cui deriva il prodotto alimentare o il suo ingrediente principale.
 FoodOn riprende la maggior parte di questi descrittori di parti animali e vegetali, ma riutilizza identificatori di termini ontologici Uberon\footnote{Uberon è un'ontologia comparativa dell'anatomia che rappresenta una varietà di strutture anatomiche presenti negli animali come polmoni, muscoli, ossa, piume e pinne.} e PO\footnote{Plant ontology (PO) è una raccolta di ontologie sviluppata da Plant Ontology Consortium. Queste ontologie descrivono le strutture anatomiche e le fasi di crescita e sviluppo attraverso Viridiplantae.}.
-Ciò comporta che in FoodOn un prodotto alimentare come la \textit{mela} può essere definito come: ``\textit{`apple (whole) food product' SubClassOf: `pome fruit' and `develops from part of' some `apple tree as food source'}".
+Ciò comporta che in FoodOn un prodotto alimentare come la \textit{mela} può essere definito come: 
+\begin{center}
+\textit{`apple (whole) food product' SubClassOf: `pome fruit' and `develops from part of' some `apple tree as food source'}.
+\end{center}
 
 \subsubsection{Sostanze analoghe e allergeni}
 \index{Sostanze analoghe e allergeni}
@@ -101,7 +104,7 @@ Ciò lo si può ben vedere dalla
 		\includegraphics[width=12cm]{FIGURE/FoodOn_topical_branches.jpg}
 	\end{center}
 }
-\caption{Visualizzazione di un albero FoodOn di 15 rami}
+\caption{Visualizzazione di uno schema ad albero di FoodOn.}
 \label{fig:reuse2}
 \end{figure}
 
@@ -115,13 +118,13 @@ In FoodOn queste relazioni sono combinate quelle di Basic Formal Ontology.
 Ciò consente a un ragionatore di applicare un riferimento adeguato a processi, qualità, ruoli ed entità informative.\\
 Esempio:
 \begin{center}
-``\textit{`hen (food source)' : `chicken (food source)' and (`has quality' some `female organism') and (`has quality' some `adult organism')}"
+\textit{`hen (food source)' : `chicken (food source)' and (`has quality' some `female organism') and (`has quality' some `adult organism')}
 \end{center}
 ciò porta ad un contraddizione perché la relazione `\textit{has quality}' in BFO consente solo qualità nel suo range, ovvero sul proprio lato destro, e sia `\textit{female organism}' che `\textit{adult organism}' sono caratteristiche di un'entità materiale essendo un tipo di `\textit{independent continuant}' il quale è disgiunto rispetto alle qualità.
 Più semplicemente, le qualità sono caratteristiche delle entità materiali ma non possono essere esse stesse entità materiali.
 Quindi la definizione può essere risolta affermando direttamente:
 \begin{center}
-``\textit{`hen (food source)' : `chicken (food source)' and `female organism' and `adult organism'}"
+\textit{`hen (food source)' : `chicken (food source)' and `female organism' and `adult organism'}
 \end{center}
 
 Per l'incorporazione di nuovi contenuti ontologici sarebbe necessaria una certa padronanza della tecnologia Web Semantico, inclusa la conoscenza di OWL e del linguaggio di query SPARQL.
