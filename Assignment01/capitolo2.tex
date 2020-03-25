@@ -4,7 +4,7 @@
 \index{Ontologia}
 
 La necessità di rappresentare la conoscenza del cibo è fondamentale per molte attività umane tra cui agricoltura, medicina, ispezione della sicurezza alimentare, modelli di acquisto e sviluppo sostenibile.
-FoodOn è una risorsa ontologica completa e open-source composta da sfaccettature gerarchiche di termini che comprendono ingredienti di base delle materie prime alimentari, termini di processo per l'imballaggio, la cottura e la conservazione e una varietà di schemi dei tipi di prodotto di livello superiore in base ai quali i prodotti alimentari possono essere classificati.
+FoodOn è una risorsa ontologica completa e open-source composta da sfaccettature gerarchiche di termini che comprendono ingredienti di base delle materie prime alimentari, termini legati al processo per l'imballaggio, la cottura e la conservazione e una varietà di schemi dei tipi di prodotto in base ai quali i prodotti alimentari possono essere classificati.
 \begin{figure}[!h]
     {\begin{center}\includegraphics[width=14cm]{FIGURE/figure-1-foodon-food-schema-2-1024x556.jpeg}\end{center}}
 \caption{\textbf{Diagramma di ``Food Product"} - Lo schema dei prodotti alimentari di FoodOn deriva principalemnte dalle sfaccettature della descrizione degli alimenti di LanguaL con l'aggiunta di relazioni ontologiche tra un prodotto alimentare e le relative qualità descrittive, componenti e processi. \label{tab1}}
@@ -22,7 +22,7 @@ L'ultima versione può anche essere esplorata tramite servizi di ricerca ontologi
   
 \subsection{FoodOn e LanguaL}
 \index{FoodOn e LanguaL}
-Come già accennato gran parte del vocabolario principale di FoodOn deriva da LanguaL, un dizionario di indicizzazione degli alimenti maturo e popolare.
+Come già accennato, gran parte del vocabolario principale di FoodOn deriva da LanguaL, un dizionario di indicizzazione degli alimenti maturo e popolare.
 In questa sezione si affronteranno le varie similitudini e differenze tra il nuovo e il vecchio progetto.
 \subsubsection{Similitudini}
 \index{Similitudini}
@@ -30,7 +30,7 @@ Come LanguaL, FoodOn fa la stessa distinzione tra le piante di origine alimentar
 Sotto il ramo ``\textit{food product type}" c'è una nuova gerarchia ``\textit{foodon food product}" che è una copia molto approssimativa del ramo relativo ai prodotti alimentari del FDA Code of Federal Regulations (CFR), ma riorganizzata per essere più ontologicamente ``pura".
 La maggior parte degli articoli di ``\textit{foodon food product}" sono collegati direttamente o tramite eredità attraverso un riferimento ``\textit{member of}" ad una categoria CFR.
 L'intera Facet B di LanguaL è duplicata sotto il ramo ``\textit{food source}" di FoodOn ed un riferimento a un organismo nella Facet B non richiede che tale organismo svolga un ruolo alimentare.
-Di conseguenza si può fare un riferimento a \textit{Bovini} attraverso assiomi che possono essere completamente dedicati alle indagini epidemiologiche sulle malattie degli zoccoli senza implicare alcuna conversazione sui \textit{Bovini} come cibo.
+Di conseguenza si può fare un riferimento, ad esempio, a \textit{Bovini} attraverso assiomi che possono essere completamente dedicati alle indagini epidemiologiche sulle malattie degli zoccoli senza implicare alcuna conversazione sui \textit{Bovini} come cibo.
 
 
 %Per distinguere a livello ontologico i riferimenti all'intero organismo dai riferimenti alle varianti dei prodotti alimentari 
@@ -38,18 +38,16 @@ Di conseguenza si può fare un riferimento a \textit{Bovini} attraverso assiomi c
 \index{Differenze}
 
 FoodOn differisce da LanguaL su una serie di fronti.
-In primo luogo in LanguaL esistono casi in cui sono presenti termini del tipo ``\textit{[facet X] not used}" o ``\textit{[facet X term] not known}" come, ad esempio, ``Mezzo di imballaggio non utilizzato".
-In FoodOn si preferisce non menzionare aspetti se non sono pertinenti, ciò significa che se un termine è rilevante viene utilizzato, altrimenti no.
-In altre parole se non si sa se un alimento può essere descritto o meno con un particolare termine, ma si sa che la categoria genitore è pertinente, allora si fa riferimento alla categoria genitore.
-Per descrivere un alimento in LanguaL si avrà, ad esempio, ``Taglio di carne non noto", invece in FoodOn ``Taglio di carne".
-Ciò permette a un ragionatore di sapere che l'entità descritta è un \textit{taglio di carne}, il che consente che una qualsiasi sottoclasse di \textit{ taglio di carne} sia pertinente.
+In primo luogo in LanguaL esistono casi in cui sono presenti termini del tipo ``\textit{[facet X] not used}" o ``\textit{[facet X term] not known}" come, ad esempio, ``\textit{Packing medium not used}".
+In FoodOn si preferisce non menzionare aspetti se non sono pertinenti, ciò significa che se non si sa se un alimento può essere descritto o meno con un particolare termine, ma si sa che la categoria genitore è pertinente, allora si fa riferimento alla categoria genitore.
+Per descrivere un alimento in LanguaL si avrà, ad esempio, ``\textit{Cut of meat not known}", invece in FoodOn ``\textit{Cut of meat}".
+Ciò permette a un ragionatore di sapere che l'entità descritta è un \textit{taglio di carne}, il che consente che una qualsiasi sottoclasse di \textit{taglio di carne} sia pertinente.
 
-In più LanguaL, per indicare l'ingrediente principale di qualsiasi alimento indicizzato, utilizza `\textit{`food source}" e per indicare gli ingredienti secondari ``\textit{treatment applied $>$ ingredient added}".
+In più LanguaL, per indicare l'ingrediente principale di qualsiasi alimento indicizzato, utilizza ``\textit{food source}" e per indicare gli ingredienti secondari ``\textit{treatment applied $>$ ingredient added}".
 FoodOn, grazie alle ontologie OWL che permettono di usare le proprietà degli oggetti per descrivere gli ingredienti primari e secondari, può utilizzare relazioni del tipo ``\textit{has ingredient}" e ``\textit{has substance added}".
 
-Invece, per regolamentare LanguaL, FoodOn ha conservato una serie di contenuti aggiunti al cibo.
+Invece, per regolamentare LanguaL, FoodOn ha conservato una serie di contenuti aggiuntivi del cibo.
 Tuttavia le relazioni ``\textit{has substance added}" di un prodotto alimentare potrebbero contenere delle percentuali o delle proporzioni, il che avvicina gli alimenti composti a una ricetta o a una descrizione dell'etichetta del prodotto.
-Come LanguaL, anche FoodOn non affronta ancora la descrizione delle ricette e ciò richiede un vocabolario di trasformazione alimentare più ampio.
 
 Infine, la maggior parte delle voci dell'elenco degli additivi alimentari di LanguaL sono state convertite in voci ChEBI\footnote{Chemical Entities of Biological Interest (ChEBI) è un database e ontologia riguardante entità molecolari focalizzate su composti chimici ``piccoli", che fa parte di Open Biomedical Ontologies.} equivalenti.
 
@@ -66,27 +64,27 @@ Inoltre, se il riferimento ITIS di un termine FoodOn può essere mappato ad un el
 
 \subsubsection{Parti vegetali o animali}
 \index{Parti vegetali o animali}
-Colloquialmente alcuni termini si riferiscono ad un intero organismo commestibile, come \textit{acciuga} o \textit{cavalletta}, mentre altri si riferiscono solo ad un parte di un organismo.
-Ad esempio: \textit{bacca} è un parte, \textit{cespuglio} è l'intero; \textit{mela} è una parte, \textit{albero} è l'intero.
+In un linguaggio colloquiale, alcuni termini possono anche riferisti ad un intero organismo commestibile, come \textit{acciuga} o \textit{cavalletta}, mentre altri si riferiscono solo ad un parte di un organismo.
+Ad esempio: \textit{bacca} è un parte e \textit{cespuglio} è l'intero; \textit{mela} è una parte e \textit{albero} è l'intero.
 Inoltre quelle parti di un organismo non sono sempre presenti o commestibili.
-La faccetta ``\textit{part of plant or animal}" di LanguaL è definita come parte anatomica della pianta o animale da cui deriva il prodotto alimentare o il suo ingrediente principale.
-FoodOn riprende la maggior parte di questi descrittori di parti animali e vegetali, ma riutilizza identificatori di termini ontologici Uberon\footnote{Uberon è un'ontologia comparativa dell'anatomia che rappresenta una varietà di strutture anatomiche presenti negli animali come polmoni, muscoli, ossa, piume e pinne.} e PO\footnote{Plant ontology (PO) è una raccolta di ontologie sviluppata da Plant Ontology Consortium. Queste ontologie descrivono le strutture anatomiche e le fasi di crescita e sviluppo attraverso Viridiplantae.}.
-Ciò comporta che in FoodOn un prodotto alimentare come la \textit{mela} può essere definito come: 
+La sfaccettatura ``\textit{part of plant or animal}" di LanguaL è definita come parte anatomica della pianta o animale da cui deriva il prodotto alimentare o il suo ingrediente principale.
+FoodOn riprende la maggior parte di questi descrittori, ma riutilizza identificatori di termini ontologici Uberon\footnote{Uberon è un'ontologia comparativa dell'anatomia che rappresenta una varietà di strutture anatomiche presenti negli animali come polmoni, muscoli, ossa, piume e pinne.} e PO\footnote{Plant ontology (PO) è una raccolta di ontologie sviluppata da Plant Ontology Consortium. Queste ontologie descrivono le strutture anatomiche e le fasi di crescita e sviluppo attraverso Viridiplantae.}.
+Ciò comporta che in FoodOn un prodotto alimentare come \textit{apple} può essere definito come: 
 \begin{center}
 \textit{`apple (whole) food product' SubClassOf: `pome fruit' and `develops from part of' some `apple tree as food source'}.
 \end{center}
 
 \subsubsection{Sostanze analoghe e allergeni}
 \index{Sostanze analoghe e allergeni}
-FoodOn da la possibilità di collegare due prodotti o ingredienti di origine alimentare attraverso la relazione ``\textit{has food substance analog}" permettendo così di indicare i possibili sostituti, per l'uso in analisi e in applicazioni sensibili agli allergeni e/o ad altri vincoli dietetici, di un particolare prodotto o ingrediente.
+FoodOn da la possibilità di collegare due prodotti o ingredienti di origine alimentare attraverso la relazione ``\textit{has food substance analog}" permettendo così di indicare i suoi possibili sostituti per l'uso in analisi e in applicazioni sensibili agli allergeni e/o ad altri vincoli dietetici.
 Ciò consente, ad esempio, di associare la vaniglia naturale a quella sintetica. Tale relazione simmetrica non ipotizza quale parte stia imitando l'altra, né la qualità della sostituzione o il rapporto più appropriato.
 Inoltre, i termini relativi alle fonti alimentari di FoodOn relativi alle malattie allergiche da ipersensibilità vengono citati all'interno di Disease Ontology (DO).
 
 
 \subsection{Riutilizzo dell'ontologia}
 \index{Riutilizzo dell'ontologia}
-Uno degli obiettivi di FoodOn è quello di diventare uno standard ben documentato, curato e stabile e
-grazie alla sua appartenenza alla OBO Foundary consente l'accesso a otologie che coprono domini come: demografia dei consumi, composizione agricola e antimicrobici, tassonomie e fenotipi delle malattie. \textit{(Figura \ref{fig:reuse1})}
+Come già accennato nel primo capitolo, uno degli obiettivi di FoodOn è quello di diventare uno standard ben documentato, curato e stabile.
+Grazie alla sua appartenenza alla OBO Foundary consente l'accesso a otologie che coprono domini come: demografia dei consumi, composizione agricola e antimicrobici, tassonomie e fenotipi delle malattie. \textit{(Figura \ref{fig:reuse1})}
 \begin{figure}[!h] {
 	\begin{center}
 		\includegraphics[width=12cm]{FIGURE/foodon_reuse.jpg}
@@ -108,7 +106,7 @@ Ciò lo si può ben vedere dalla
 \label{fig:reuse2}
 \end{figure}
 
-Il riutilizzo dei termini fra le varie ontologie consente di condividere lo sforzo di fornire un vocabolario standardizzato.
+Il riutilizzo dei termini fra le varie ontologie consente di condividere lo sforzo e di fornire un vocabolario standardizzato.
 Per questo OBOFoundary incoraggia, con alcune eccezioni, ogni ontologia a riutilizzare i termini di altri dove applicabile.
 Nel caso di FoodOn, sono stati sostituiti circa 600 termini di sostanze chimiche di LanguaL con identificatori chimici ontologici di ChEBI.
 Le eccezioni accennate precedentemente riguardano al fatto che le ontologie di OBOFoundary devono rispettare una determinata struttura tecnica generale che riguarda la le migliori pratiche per la cura delle versioni dei file delle ontologie, gli URL permanenti per i termini e gli schemi utilizzati per annotare le sostituzioni di termini deprecati in modo che il contenuto del database possa essere aggiornato senza problemi.
@@ -116,27 +114,27 @@ Le eccezioni accennate precedentemente riguardano al fatto che le ontologie di O
 Riprendendo la \textit{figura \ref{tab1}} c'è da chiarire che molte delle relazioni provengono dall'OBO Foundry's Relation Ontology il che porta restrizioni al dominio delle relazioni OWL e al codice stesso.
 In FoodOn queste relazioni sono combinate quelle di Basic Formal Ontology.
 Ciò consente a un ragionatore di applicare un riferimento adeguato a processi, qualità, ruoli ed entità informative.\\
+
 Esempio:
 \begin{center}
 \textit{`hen (food source)' : `chicken (food source)' and (`has quality' some `female organism') and (`has quality' some `adult organism')}
 \end{center}
 ciò porta ad un contraddizione perché la relazione `\textit{has quality}' in BFO consente solo qualità nel suo range, ovvero sul proprio lato destro, e sia `\textit{female organism}' che `\textit{adult organism}' sono caratteristiche di un'entità materiale essendo un tipo di `\textit{independent continuant}' il quale è disgiunto rispetto alle qualità.
 Più semplicemente, le qualità sono caratteristiche delle entità materiali ma non possono essere esse stesse entità materiali.
-Quindi la definizione può essere risolta affermando direttamente:
+Quindi la definizione può essere formulata nel seguente modo senza generare contraddizioni:
 \begin{center}
 \textit{`hen (food source)' : `chicken (food source)' and `female organism' and `adult organism'}
 \end{center}
 
 Per l'incorporazione di nuovi contenuti ontologici sarebbe necessaria una certa padronanza della tecnologia Web Semantico, inclusa la conoscenza di OWL e del linguaggio di query SPARQL.
-Tuttavia viene incoraggiato il riutilizzo dell'ontologia anche per chi non possiede una formazione completa nell'ambito del Web Semantico fornendo fogli di calcoli o modelli di database personalizzabili tramite portali web.
-Inoltre, Hsiao Lab sta sviluppando uno strumento che trasforma i contenuti ontologici di markup in standard, forniti sia in una form web che in versione tabulare o json per l'implementazione nei sistemi di gestione e scambio dati.
+Tuttavia viene incoraggiato il riutilizzo dell'ontologia anche per chi non possiede questa formazione completa fornendo fogli di calcoli o modelli di database personalizzabili tramite portali web.
+Inoltre, Hsiao Lab sta sviluppando uno strumento che trasforma i contenuti ontologici di markup in standard, forniti sia tramite una form web che in versione tabulare o json per l'implementazione nei sistemi di gestione e scambio dati.
 \newpage
 
 \section{Struttura}
 \index{Struttura}
-Il progetto è compatibile con Basic Formal Ontology (BFO), il che significa che tutte le classi fornite da FoodOn sono organizzate in classi BFO.
+Nella sezione precedente si è accennato al fatto che FoodOn è compatibile con Basic Formal Ontology (BFO), il che significa che tutte le classi fornite da FoodOn sono organizzate in classi BFO.
 In realtà FoodOn include BFO, quindi quando si esplora l'ontologia in maniera top-down è un po' più complicato notare dove finisce BFO e dove inizino i termini di FoodOn.
-%Le ontologie compatibili con BFO sono disponibili su \href{http://obofoundry.org/}{\textit{\underline{OBOFoundry.org}}}
 Di seguito saranno mostrate le principali classi di FoodOn.\\
 
 
@@ -213,15 +211,14 @@ Alcune categorie di informazioni che riguardano gli alimenti e che di solito non
 \newpage    
 \section{Relazioni}
 \index{Relazioni}
-
-FoodOn utilizza le seguenti relazioni:
+Per quanto riguarda alle relazioni FoodOn utilizza:
 \begin{itemize}
 \item ``\textbf{has part}", utilizzato tra entità dello stesso tipo, ad esempio:
 \begin{itemize}
-\item tra entità anatomiche: \textit{``albumen" is part of an egg}
+\item tra entità anatomiche: \textit{``albumen is part of an egg"}
 \item tra parti prescrittive: \textit{``a pie has a crust and a filling"}
 \end{itemize}
-\item ``\textbf{has substance added}", proprietà di un oggetto che può essere applicata a una qualsiasi sostanza (chimica, fisica, alimentare, ...). Si differenzia da ``has part" perché la sostanza aggiunta potrebbe non essere individuabile nella miscela in un secondo momento.
+\item ``\textbf{has substance added}", proprietà di un oggetto che può essere applicata a una qualsiasi sostanza chimica, fisica, alimentare o altro. Si differenzia da ``has part", perché la sostanza aggiunta potrebbe non essere individuabile nella miscela in un secondo momento.
 \item ``\textbf{has ingredient}", sotto-proprietà di ``has substance added" pertinente solo a un dominio e intervallo alimentare. È usato per riferirsi a una sostanza alimentare aggiunta a un prodotto alimentare.
 \item X ``\textbf{member of}" Y, utilizzato per associare un prodotto alimentare a una categoria di tipo prodotto che non rientra nel ramo ``foodon product type".
 \item X ``\textbf{develops from part of}" Y può essere usato quando X è una struttura cellulare che subisce una crescita biologica. La relazione non implica l'eliminazione di Y, infatti molte piante generano cibo da raccogliere durante la stagione di crescita o comunque per diversi anni. In FoodOn, questo viene applicato principalmente a frutta, semi e verdure come le zucchine raccolte dalle piante.
