@@ -1,0 +1,10 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+SELECT DISTINCT ?id
+	WHERE {
+		{?parent rdfs:subClassOf* obo:FOODON_03411297} #animal food source
+		UNION {?parent rdfs:subClassOf* obo:FOODON_03411347} # plant food source
+		UNION {?parent rdfs:subClassOf* obo:FOODON_03470107} #preservation type
+		?id rdfs:subClassOf ?parent.
+	}
+ORDER BY ?label
