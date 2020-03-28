@@ -245,30 +245,30 @@ Spesso funge da scorciatoia per un modello di processo più elaborato, se present
 \label{fig:prod_al}
 \end{figure}
 
-\newpage    
-
-\section{Strumenti utili}
-\index{Strumenti utili}
-\subsection{Ontofox}
-\index{Ontofox}
-Ontofox fornisce un servizio di importazione di file ontologici con il quale, ad esempio, si possono importare dei termini FoodOn selezionati in un'ontologia.
-Questo servizio, nello specifico, è utile per inserire gli identificatori dei termini e recuperare l'equivalente file OWL che include annotazioni e altri assiomi.
-Il file che Ontofox genera potrà quindi essere riutilizzato in futuro per importare versioni aggiornate di tali termini.
-
-\lstinputlisting[caption=Esempio di file di specifica che creerà un file di importazione contenente l'intero albero dei termini "food source" da FoodOn]{EXAMPLES/ontofox.txt}
-
-\subsection{Protégé}
-\index{Protégé}
-In maniera simile si può fare la stessa cosa attraverso l'editor di ontologie OWL Protégé.
-Questo strumento consente di selezionare le classi e da queste creare una nuova ontologia, tuttavia ogni elemento deve essere selezionato manualmente attraverso la sua interfaccia, il che diventa particolarmente oneroso quando ci sono migliaia di elementi discendenti da un elemento radice che si desidera importare.
-
-\subsection{SPARQL + Ontofox}
-\index{SPARQL + Ontofox}
-In Protégé 5 si può usare la combinazione tra SPARQL e Ontofox ottenendo la possibilità di selezionare termini mediante modalità che Ontofox non supporta nativamente.
-Di seguito alcuni esempi di query che è possibile fare grazie all'integrazione con SPARQL.
-
-\lstinputlisting[caption=Questa query recupera per le classi principali indicate tutti i relativi termini sottostanti]{EXAMPLES/sparql1.txt}
-
-\newpage
-
-\lstinputlisting[caption=Query più precisa che ottiene solo gli ID del termini "leaf"]{EXAMPLES/sparql2.txt}
+%\newpage    
+%
+%\section{Strumenti utili}
+%\index{Strumenti utili}
+%\subsection{Ontofox}
+%\index{Ontofox}
+%Ontofox fornisce un servizio di importazione di file ontologici con il quale, ad esempio, si possono importare dei termini FoodOn selezionati in un'ontologia.
+%Questo servizio, nello specifico, è utile per inserire gli identificatori dei termini e recuperare l'equivalente file OWL che include annotazioni e altri assiomi.
+%Il file che Ontofox genera potrà quindi essere riutilizzato in futuro per importare versioni aggiornate di tali termini.
+%
+%\lstinputlisting[caption=Esempio di file di specifica che creerà un file di importazione contenente l'intero albero dei termini "food source" da FoodOn]{EXAMPLES/ontofox.txt}
+%
+%\subsection{Protégé}
+%\index{Protégé}
+%In maniera simile si può fare la stessa cosa attraverso l'editor di ontologie OWL Protégé.
+%Questo strumento consente di selezionare le classi e da queste creare una nuova ontologia, tuttavia ogni elemento deve essere selezionato manualmente attraverso la sua interfaccia, il che diventa particolarmente oneroso quando ci sono migliaia di elementi discendenti da un elemento radice che si desidera importare.
+%
+%\subsection{SPARQL + Ontofox}
+%\index{SPARQL + Ontofox}
+%In Protégé 5 si può usare la combinazione tra SPARQL e Ontofox ottenendo la possibilità di selezionare termini mediante modalità che Ontofox non supporta nativamente.
+%Di seguito alcuni esempi di query che è possibile fare grazie all'integrazione con SPARQL.
+%
+%\lstinputlisting[caption=Questa query recupera per le classi principali indicate tutti i relativi termini sottostanti]{EXAMPLES/sparql1.txt}
+%
+%\newpage
+%
+%\lstinputlisting[caption=Query più precisa che ottiene solo gli ID del termini "leaf"]{EXAMPLES/sparql2.txt}
