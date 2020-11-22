@@ -13,6 +13,12 @@
 \usepackage{cleveref}
 \usepackage{listings}
 \usepackage{caption}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{graphicx,subfigure}
+\usepackage[nottoc]{tocbibind}
+\floatstyle{boxed} % or whatever
+\restylefloat{figure}
 \captionsetup[lstlisting]{font={small,tt}}
                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                % Scelta delle dimensioni della pagina %
@@ -69,8 +75,8 @@
 \input{capitolo1.tex}
 
 % inclusione dei capitoli
-%\input{capitolo2.tex}
-%\input{capitolo3.tex}
+\input{capitolo2.tex}
+\input{capitolo3.tex}
 
 %\appendix
 
@@ -85,9 +91,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \backmatter
 
-
-%\input{./Appendice/appendice.tex}
-%\input{./bibliografia.tex}
+\bibliographystyle{unsrt}
+\bibliography{sample}
 
 
 %\listoffigures
