@@ -1,11 +1,17 @@
 package utilities;
 
+import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 
+import java.io.File;
+import java.util.Optional;
+
 public class OntologyUtils {
+    private static final String ontologyPath = System.getProperty("user.home") + File.separator + "Assignment0203";
+
     private static OWLOntologyUtil currentOntology;
 
-    public void setOntology(OWLOntologyUtil ontology) {
+    public static void setOntology(OWLOntologyUtil ontology) {
         currentOntology = ontology;
     }
 
@@ -16,6 +22,15 @@ public class OntologyUtils {
     /*
         Methods for creation: references to http://owlapi.sourceforge.net/documentation.html
      */
+
+    public static Optional<OWLOntologyUtil> newEmptyOntology(IRI ontologyIRI) {
+        try {
+            return Optional.of(new OWLOntologyUtil(OWLManager.createOWLOntologyManager().createOntology(ontologyIRI)));
+        } catch (OWLOntologyCreationException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
+    }
 
     public static OWLNamedIndividual createIndividual(OWLOntologyUtil ontology, IRI individualIRI) {
        return ontology.getDataFactory().getOWLNamedIndividual(individualIRI);
