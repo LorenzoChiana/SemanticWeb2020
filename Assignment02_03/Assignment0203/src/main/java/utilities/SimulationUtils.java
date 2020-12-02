@@ -4,16 +4,13 @@ import org.semanticweb.owlapi.model.IRI;
 
 import java.util.Optional;
 
-public class SimulationUtils {
-    public final static String myOntologyIRI = "http://prova/myontology";
-    // CarOnto, ControlOnto and MapOnto url
-    private final static IRI carOntoIRI = IRI.create("http://ri-www.nii.ac.jp/ADAS/CarOnto.owl");
-    private final static IRI controlOntoIRI = IRI.create("http://ri-www.nii.ac.jp/ADAS/ControlOnto.owl");
-    private final static IRI mapOntoIRI = IRI.create("http://ri-www.nii.ac.jp/ADAS/MapOnto.owl");
+import static utilities.IRIs.*;
 
-    public static OWLOntologyUtil createMyPathDataOntology() {
+public class SimulationUtils {
+
+    public static OWLOntologyUtil createMyControlDataOntology() {
         // Creation of new empty ontology
-        OWLOntologyUtil onto = OntologyUtils.newEmptyOntology(IRI.create(myOntologyIRI)).get();
+        OWLOntologyUtil onto = OntologyUtils.newEmptyOntology(myOntologyIRI).get();
         OntologyUtils.setOntology(onto);
         System.out.println("Step1: empty ontology");
 
@@ -22,7 +19,7 @@ public class SimulationUtils {
         onto.importOntology(controlOntoIRI);
         onto.importOntology(mapOntoIRI);
         System.out.println("Step2: import remote ontologies ("+ onto.numImportedOntologies() +")");
-
+        
         
 
         return onto;
