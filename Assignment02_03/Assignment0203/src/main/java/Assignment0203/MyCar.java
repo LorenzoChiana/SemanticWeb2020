@@ -1,3 +1,5 @@
+package Assignment0203;
+
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLObjectProperty;

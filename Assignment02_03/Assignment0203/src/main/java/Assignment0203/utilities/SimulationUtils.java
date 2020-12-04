@@ -1,16 +1,12 @@
-package utilities;
+package Assignment0203.utilities;
 
-import org.semanticweb.owlapi.model.IRI;
-
-import java.util.Optional;
-
-import static utilities.IRIs.*;
+import static Assignment0203.utilities.IRIs.*;
 
 public class SimulationUtils {
 
-    public static OWLOntologyUtil createMyControlDataOntology() {
+    public static OWLOntologyUtils createMyControlDataOntology() {
         // Creation of new empty ontology
-        OWLOntologyUtil onto = OntologyUtils.newEmptyOntology(myOntologyIRI).get();
+        OWLOntologyUtils onto = OntologyUtils.newEmptyOntology(myOntologyIRI).get();
         OntologyUtils.setOntology(onto);
         System.out.println("Step1: empty ontology");
 
@@ -19,9 +15,10 @@ public class SimulationUtils {
         onto.importOntology(controlOntoIRI);
         onto.importOntology(mapOntoIRI);
         System.out.println("Step2: import remote ontologies ("+ onto.numImportedOntologies() +")");
-        
-        
 
+        // Creation of road segment with 2 carriageway
+        MapUtils.addRoadSegment();
+        MapUtils.connectObjectPropertiesToRoadSegment(onto);
         return onto;
     }
 }

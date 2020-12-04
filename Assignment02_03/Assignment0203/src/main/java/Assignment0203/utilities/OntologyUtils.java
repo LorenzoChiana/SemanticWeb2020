@@ -1,4 +1,4 @@
-package utilities;
+package Assignment0203.utilities;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
@@ -9,13 +9,13 @@ import java.util.Optional;
 public class OntologyUtils {
     private static final String ontologyPath = System.getProperty("user.home") + File.separator + "Assignment0203";
 
-    private static OWLOntologyUtil currentOntology;
+    private static OWLOntologyUtils currentOntology;
 
-    public static void setOntology(OWLOntologyUtil ontology) {
+    public static void setOntology(OWLOntologyUtils ontology) {
         currentOntology = ontology;
     }
 
-    public static OWLOntologyUtil getOntology() {
+    public static OWLOntologyUtils getOntology() {
         return currentOntology;
     }
 
@@ -23,16 +23,16 @@ public class OntologyUtils {
         Methods for creation: references to http://owlapi.sourceforge.net/documentation.html
      */
 
-    public static Optional<OWLOntologyUtil> newEmptyOntology(IRI ontologyIRI) {
+    public static Optional<OWLOntologyUtils> newEmptyOntology(IRI ontologyIRI) {
         try {
-            return Optional.of(new OWLOntologyUtil(OWLManager.createOWLOntologyManager().createOntology(ontologyIRI)));
+            return Optional.of(new OWLOntologyUtils(OWLManager.createOWLOntologyManager().createOntology(ontologyIRI)));
         } catch (OWLOntologyCreationException e) {
             e.printStackTrace();
         }
         return Optional.empty();
     }
 
-    public static OWLNamedIndividual createIndividual(OWLOntologyUtil ontology, IRI individualIRI) {
+    public static OWLNamedIndividual createIndividual(OWLOntologyUtils ontology, IRI individualIRI) {
        return ontology.getDataFactory().getOWLNamedIndividual(individualIRI);
     }
 
@@ -40,7 +40,7 @@ public class OntologyUtils {
         return createIndividual(getOntology(), individualIRI);
     }
 
-    public static OWLObjectProperty createObjectProperty(OWLOntologyUtil ontology, IRI objectPropertyIRI) {
+    public static OWLObjectProperty createObjectProperty(OWLOntologyUtils ontology, IRI objectPropertyIRI) {
         return ontology.getDataFactory().getOWLObjectProperty(objectPropertyIRI);
     }
 
@@ -48,7 +48,7 @@ public class OntologyUtils {
         return createObjectProperty(getOntology(), objectPropertyIRI);
     }
 
-    public static OWLSymmetricObjectPropertyAxiom createSymmetricObjectProperty(OWLOntologyUtil ontology, OWLObjectProperty symmetricObjectProperty) {
+    public static OWLSymmetricObjectPropertyAxiom createSymmetricObjectProperty(OWLOntologyUtils ontology, OWLObjectProperty symmetricObjectProperty) {
         return ontology.getDataFactory().getOWLSymmetricObjectPropertyAxiom(symmetricObjectProperty);
     }
 
@@ -56,7 +56,7 @@ public class OntologyUtils {
         return createSymmetricObjectProperty(getOntology(), symmetricObjectProperty);
     }
 
-    public static OWLObjectPropertyAssertionAxiom createObjectPropertyAssertionAxiom(OWLOntologyUtil ontology, OWLIndividual subject, OWLObjectProperty property, OWLIndividual object) {
+    public static OWLObjectPropertyAssertionAxiom createObjectPropertyAssertionAxiom(OWLOntologyUtils ontology, OWLIndividual subject, OWLObjectProperty property, OWLIndividual object) {
         return ontology.getDataFactory().getOWLObjectPropertyAssertionAxiom(property, subject, object);
     }
 
@@ -64,7 +64,7 @@ public class OntologyUtils {
         return createObjectPropertyAssertionAxiom(getOntology(), subject, property, object);
     }
 
-    public static OWLInverseObjectPropertiesAxiom createInverseObjectProperty(OWLOntologyUtil ontology, OWLObjectProperty forwardProperty, OWLObjectProperty inverseProperty) {
+    public static OWLInverseObjectPropertiesAxiom createInverseObjectProperty(OWLOntologyUtils ontology, OWLObjectProperty forwardProperty, OWLObjectProperty inverseProperty) {
         return ontology.getDataFactory().getOWLInverseObjectPropertiesAxiom(forwardProperty, inverseProperty);
     }
 
@@ -72,7 +72,7 @@ public class OntologyUtils {
         return createInverseObjectProperty(getOntology(), forwardProperty, inverseProperty);
     }
 
-    public static OWLClass createClass(OWLOntologyUtil ontology, IRI classIRI) {
+    public static OWLClass createClass(OWLOntologyUtils ontology, IRI classIRI) {
         return ontology.getDataFactory().getOWLClass(classIRI);
     }
 
@@ -80,7 +80,7 @@ public class OntologyUtils {
         return createClass(getOntology(), classIRI);
     }
 
-    public static OWLClassAssertionAxiom createClassAssertionAxiom(OWLOntologyUtil ontology, OWLClass owlClass, OWLIndividual individual) {
+    public static OWLClassAssertionAxiom createClassAssertionAxiom(OWLOntologyUtils ontology, OWLClass owlClass, OWLIndividual individual) {
         return ontology.getDataFactory().getOWLClassAssertionAxiom(owlClass, individual);
     }
 
@@ -88,7 +88,7 @@ public class OntologyUtils {
         return createClassAssertionAxiom(getOntology(), owlClass, individual);
     }
 
-    public static OWLDeclarationAxiom createDeclarationAxiom(OWLOntologyUtil ontology, OWLClass owlClass) {
+    public static OWLDeclarationAxiom createDeclarationAxiom(OWLOntologyUtils ontology, OWLClass owlClass) {
         return createDeclarationAxiom(ontology, (OWLEntity) owlClass);
     }
 
@@ -96,7 +96,7 @@ public class OntologyUtils {
         return createDeclarationAxiom(getOntology(), owlClass);
     }
 
-    public static OWLDeclarationAxiom createDeclarationAxiom(OWLOntologyUtil ontology, OWLNamedIndividual individual) {
+    public static OWLDeclarationAxiom createDeclarationAxiom(OWLOntologyUtils ontology, OWLNamedIndividual individual) {
         return createDeclarationAxiom(ontology, (OWLEntity) individual);
     }
 
@@ -104,7 +104,7 @@ public class OntologyUtils {
         return createDeclarationAxiom(getOntology(), individual);
     }
 
-    public static OWLDeclarationAxiom createIndividualAndHisDeclarationAxiom(OWLOntologyUtil ontology, IRI individualIRI) {
+    public static OWLDeclarationAxiom createIndividualAndHisDeclarationAxiom(OWLOntologyUtils ontology, IRI individualIRI) {
         return OntologyUtils.createDeclarationAxiom(ontology, createIndividual(ontology, individualIRI));
     }
 
@@ -112,7 +112,7 @@ public class OntologyUtils {
         return createIndividualAndHisDeclarationAxiom(getOntology(), individualIRI);
     }
 
-    public static OWLDeclarationAxiom createDeclarationAxiom(OWLOntologyUtil ontology, OWLEntity declaredEntity) {
+    public static OWLDeclarationAxiom createDeclarationAxiom(OWLOntologyUtils ontology, OWLEntity declaredEntity) {
         return ontology.getDataFactory().getOWLDeclarationAxiom(declaredEntity);
     }
 
@@ -120,7 +120,7 @@ public class OntologyUtils {
         return createDeclarationAxiom(getOntology(), declaredEntity);
     }
 
-    public static OWLNamedIndividual createIndividualAndSetHisType(OWLOntologyUtil ontology, IRI individualIri, OWLClass individualType) {
+    public static OWLNamedIndividual createIndividualAndSetHisType(OWLOntologyUtils ontology, IRI individualIri, OWLClass individualType) {
         OWLNamedIndividual individual = OntologyUtils.createIndividual(ontology, individualIri);
         ontology.addAxiom(OntologyUtils.createClassAssertionAxiom(ontology, individualType, individual));
         return individual;
@@ -130,7 +130,7 @@ public class OntologyUtils {
         return createIndividualAndSetHisType(getOntology(), individualIri, individualType);
     }
 
-    public static OWLDataProperty createDataProperty(OWLOntologyUtil ontology, IRI dataPropertyIRI) {
+    public static OWLDataProperty createDataProperty(OWLOntologyUtils ontology, IRI dataPropertyIRI) {
         return ontology.getDataFactory().getOWLDataProperty(dataPropertyIRI);
     }
 
@@ -138,7 +138,7 @@ public class OntologyUtils {
         return createDataProperty(getOntology(), dataPropertyIRI);
     }
 
-    public static OWLDataPropertyAssertionAxiom createDataPropertyAxiom(OWLOntologyUtil ontology, OWLDataProperty dataProperty, OWLIndividual individual, String value) {
+    public static OWLDataPropertyAssertionAxiom createDataPropertyAxiom(OWLOntologyUtils ontology, OWLDataProperty dataProperty, OWLIndividual individual, String value) {
         return ontology.getDataFactory().getOWLDataPropertyAssertionAxiom(dataProperty, individual, value);
     }
 

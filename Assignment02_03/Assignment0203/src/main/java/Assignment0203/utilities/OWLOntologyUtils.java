@@ -1,23 +1,19 @@
-package utilities;
+package Assignment0203.utilities;
 
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.model.parameters.ChangeApplied;
-import org.semanticweb.owlapi.search.Searcher;
 import org.semanticweb.owlapi.util.OWLEntityRemover;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class OWLOntologyUtil {
+public class OWLOntologyUtils {
     private OWLOntology ontology;
     private OWLOntologyManager owlOntologyManager;
     private OWLEntityRemover owlEntityRemover;
     private OWLDataFactory owlDataFactory;
 
-    public OWLOntologyUtil(OWLOntology ontology) {
+    public OWLOntologyUtils(OWLOntology ontology) {
         this.ontology = ontology;
         this.owlOntologyManager = ontology.getOWLOntologyManager();
         this.owlEntityRemover = new OWLEntityRemover(Collections.singleton(ontology));

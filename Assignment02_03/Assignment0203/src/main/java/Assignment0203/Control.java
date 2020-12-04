@@ -1,4 +1,7 @@
+package Assignment0203;
+
 import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLObjectProperty;
 
 public class Control {
     // DrivingAction
@@ -16,6 +19,12 @@ public class Control {
     private OWLClass greenGo;
     private OWLClass redStop;
     private OWLClass yellow;
+
+    // Warnings
+    private OWLClass overSpeedWarning;
+
+    // Properties
+    private OWLObjectProperty overSpeedWarningThan;
 
     private static Control myControlOnto;
 
@@ -104,5 +113,21 @@ public class Control {
 
     public void setYellow(OWLClass yellow) {
         this.yellow = yellow;
+    }
+
+    public OWLClass getOverSpeedWarning() {
+        return overSpeedWarning;
+    }
+
+    public void setOverSpeedWarning(OWLClass overSpeedWarning) {
+        this.overSpeedWarning = overSpeedWarning;
+    }
+
+    public OWLObjectProperty getOverSpeedWarningThan() {
+        return overSpeedWarningThan;
+    }
+
+    public void setOverSpeedWarningThan(OWLObjectProperty overSpeedWarningThan) {
+        this.overSpeedWarningThan = overSpeedWarningThan;
     }
 }
