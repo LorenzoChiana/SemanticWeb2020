@@ -19,6 +19,18 @@ public class SimulationUtils {
         // Creation of road segment with 2 carriageway
         MapUtils.addRoadSegment();
         MapUtils.connectObjectPropertiesToRoadSegment(onto);
+
+        //Creation class and properties for SWRL about speed
+        ControlUtils.addClassForSpeedSWRLRules();
+        ControlUtils.connectPropertiesForSpeedSWRLRules();
+
+        //Creation of my car
+        MyCarUtils.addMyCar();
+        MyCarUtils.connectPropertiesToMyCar(onto);
+
+        //Set the speed profile
+        SpeedProfileUtils.addSpeedProfile();
+
         return onto;
     }
 }

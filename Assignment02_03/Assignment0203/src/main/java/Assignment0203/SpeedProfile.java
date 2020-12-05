@@ -10,7 +10,7 @@ public class SpeedProfile {
 
     private static SpeedProfile speedProfileOnto;
 
-    private static SpeedProfile getInstance() {
+    public static SpeedProfile getInstance() {
         if(speedProfileOnto == null) {
             speedProfileOnto = new SpeedProfile();
         }
