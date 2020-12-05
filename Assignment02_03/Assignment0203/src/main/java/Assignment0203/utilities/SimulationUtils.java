@@ -28,9 +28,10 @@ public class SimulationUtils {
         MyCarUtils.addMyCar();
         MyCarUtils.connectPropertiesToMyCar(onto);
 
-        //Set the speed profile
+        //Set the speed profile and speed limit
         SpeedProfileUtils.addSpeedProfile();
-
+        MapUtils.addSpeedLimit();
+        MapUtils.connectSpeedMaxProperty(onto);
         return onto;
     }
 }

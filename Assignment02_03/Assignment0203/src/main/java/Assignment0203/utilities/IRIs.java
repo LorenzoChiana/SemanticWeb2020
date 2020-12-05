@@ -16,6 +16,7 @@ public class IRIs {
     //Classes of MapOnto
     public final static IRI roadSegmentClassIRI = IRI.create(mapOntoString + "#RoadSegment");
     public final static IRI oneWayLaneClassIRI = IRI.create(mapOntoString + "#OneWayLane");
+    public final static IRI speedLimitClassIRI = IRI.create((mapOntoString + "#SpeedLimit"));
     //Classes of ControlOnto
     public final static IRI overSpeedWarningClassIRI = IRI.create(myOntologyString + "#OverSpeedWarning");
     //Classes of CarOnto
@@ -28,11 +29,12 @@ public class IRIs {
     public final static IRI individualRoadSegment = IRI.create(myOntologyString + "#individualRoadSegment");
     public final static IRI individualRoadSegmentCarriagewayR = IRI.create(myOntologyString + "#individualRoadSegmentCarriagewayR");
     public final static IRI individualRoadSegmentCarriagewayL = IRI.create(myOntologyString + "#individualRoadSegmentCarriagewayL");
-
+    public final static IRI individualSpeedLimit = IRI.create(myOntologyString + "#speedLimit");
     //Properties
     public final static IRI hasLaneIRI = IRI.create(mapOntoString + "#hasLane");
     public final static IRI isLaneOfIRI = IRI.create(mapOntoString + "#isLaneOf");
     public final static IRI overSpeedWarningThanIRI = IRI.create(myOntologyString + "#overSpeedWarningThan");
     public final static IRI carIdIRI = IRI.create(carOntoString + "#carID");
+    public final static IRI speedMaxIRI = IRI.create(mapOntoString + "#speedMax");
 
 }

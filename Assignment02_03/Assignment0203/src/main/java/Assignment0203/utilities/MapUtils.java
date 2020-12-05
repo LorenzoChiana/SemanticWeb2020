@@ -2,10 +2,7 @@ package Assignment0203.utilities;
 
 import Assignment0203.Map;
 import Assignment0203.RoadSegment;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLIndividual;
-import org.semanticweb.owlapi.model.OWLObjectProperty;
-import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.model.*;
 
 import static Assignment0203.utilities.IRIs.*;
 
@@ -27,6 +24,10 @@ public class MapUtils {
         );
     }
 
+    /** Connects object properties to road segment
+     *
+     * @param ontology the ontology
+     */
     public static void connectObjectPropertiesToRoadSegment(OWLOntologyUtils ontology) {
         OWLObjectProperty hasLane = OntologyUtils.createObjectProperty(hasLaneIRI);
         OWLObjectProperty isLaneOf = OntologyUtils.createObjectProperty(isLaneOfIRI);
@@ -47,5 +48,27 @@ public class MapUtils {
                 hasLane,
                 mapData.getRoadSegment().getCarriagewayL())
         );
+    }
+
+    /** Creates class for speed limit */
+    public static void addSpeedLimit() {
+        OWLClass speedLimitClass = OntologyUtils.createClass(speedLimitClassIRI);
+        mapData.setClassSpeedLimit(speedLimitClass);
+        mapData.setSpeedLimit(OntologyUtils.createIndividualAndSetHisType(individualSpeedLimit, speedLimitClass));
+    }
+
+    /** Connects the data property speedMax
+     *
+     * @param ontology the ontology
+     */
+    public static void connectSpeedMaxProperty(OWLOntologyUtils ontology) {
+        OWLDataProperty speedMax = OntologyUtils.createDataProperty(speedMaxIRI);
+        mapData.setSpeedMax(speedMax);
+        // new axiom: 50km/h is the new speed limit
+        ontology.addAxiom(OntologyUtils.createDataPropertyAxiom(
+                speedMax,
+                mapData.getSpeedLimit(),
+                "50"
+        ));
     }
 }
