@@ -3,27 +3,27 @@ package Assignment0203;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 
 public class RoadSegment {
-    private OWLNamedIndividual roadSegment;
-    private OWLNamedIndividual carriagewayR;
-    private OWLNamedIndividual carriagewayL;
+    private final OWLNamedIndividual road;
+    private final OWLNamedIndividual laneRight;
+    private final OWLNamedIndividual laneLeft;
 
     public RoadSegment(OWLNamedIndividual road,
-                       OWLNamedIndividual carriagewayR,
-                       OWLNamedIndividual carriagewayL) {
-        this.roadSegment = road;
-        this.carriagewayR = carriagewayR;
-        this.carriagewayL = carriagewayL;
+                       OWLNamedIndividual laneRight,
+                       OWLNamedIndividual laneLeft) {
+        this.road = road;
+        this.laneRight = laneRight;
+        this.laneLeft = laneLeft;
     }
 
-    public OWLNamedIndividual getRoadSegment() {
-        return this.roadSegment;
+    public OWLNamedIndividual getRoad() {
+        return this.road;
     }
 
-    public OWLNamedIndividual getCarriagewayR() {
-        return this.carriagewayR;
+    public OWLNamedIndividual getLaneRight() {
+        return this.laneRight;
     }
 
-    public OWLNamedIndividual getCarriagewayL() {
-        return this.carriagewayL;
+    public OWLNamedIndividual getLaneLeft() {
+        return this.laneLeft;
     }
 }

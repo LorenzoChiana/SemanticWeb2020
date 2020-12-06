@@ -1,6 +1,7 @@
 package Assignment0203;
 
 import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 
 public class Control {
@@ -25,6 +26,8 @@ public class Control {
 
     // Properties
     private OWLObjectProperty overSpeedWarningThan;
+    private OWLObjectProperty nextPathSegment;
+    private OWLDataProperty pathSegmentID;
 
     private static Control myControlOnto;
 
@@ -129,5 +132,21 @@ public class Control {
 
     public void setOverSpeedWarningThan(OWLObjectProperty overSpeedWarningThan) {
         this.overSpeedWarningThan = overSpeedWarningThan;
+    }
+
+    public OWLObjectProperty getNextPathSegment() {
+        return nextPathSegment;
+    }
+
+    public void setNextPathSegment(OWLObjectProperty nextPathSegment) {
+        this.nextPathSegment = nextPathSegment;
+    }
+
+    public OWLDataProperty getPathSegmentID() {
+        return pathSegmentID;
+    }
+
+    public void setPathSegmentID(OWLDataProperty pathSegmentID) {
+        this.pathSegmentID = pathSegmentID;
     }
 }

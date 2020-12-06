@@ -11,8 +11,8 @@ public class MapUtils {
 
     /** Creates a road segment */
     public static void addRoadSegment() {
-        OWLClass classRoadSegment = OntologyUtils.createClass(roadSegmentClassIRI);
-        OWLClass classOneWayLane = OntologyUtils.createClass(oneWayLaneClassIRI);
+        OWLClass classRoadSegment = OntologyUtils.createClass(roadSegmentIRI);
+        OWLClass classOneWayLane = OntologyUtils.createClass(oneWayLaneIRI);
         mapData.setClassRoadSegment(classRoadSegment);
         mapData.setClassOneWayLane(classOneWayLane);
         mapData.setRoadSegment(
@@ -35,24 +35,24 @@ public class MapUtils {
         mapData.setIsLaneOf(isLaneOf);
         /* new axioms:
             hasLane is inverse of isLaneOf
-            the road segment has a right carriageway and a left one
+            the road segment has a right lane and a left one
          */
         ontology.addAxiom(OntologyUtils.createInverseObjectProperty(hasLane, isLaneOf));
         ontology.addAxiom(OntologyUtils.createObjectPropertyAssertionAxiom(
-                mapData.getRoadSegment().getRoadSegment(),
+                mapData.getRoadSegment().getRoad(),
                 hasLane,
-                mapData.getRoadSegment().getCarriagewayR())
+                mapData.getRoadSegment().getLaneRight())
         );
         ontology.addAxiom(OntologyUtils.createObjectPropertyAssertionAxiom(
-                mapData.getRoadSegment().getRoadSegment(),
+                mapData.getRoadSegment().getRoad(),
                 hasLane,
-                mapData.getRoadSegment().getCarriagewayL())
+                mapData.getRoadSegment().getLaneLeft())
         );
     }
 
     /** Creates class for speed limit */
     public static void addSpeedLimit() {
-        OWLClass speedLimitClass = OntologyUtils.createClass(speedLimitClassIRI);
+        OWLClass speedLimitClass = OntologyUtils.createClass(speedLimitIRI);
         mapData.setClassSpeedLimit(speedLimitClass);
         mapData.setSpeedLimit(OntologyUtils.createIndividualAndSetHisType(individualSpeedLimit, speedLimitClass));
     }
