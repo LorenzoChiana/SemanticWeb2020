@@ -7,6 +7,7 @@ import org.semanticweb.owlapi.util.OWLEntityRemover;
 import java.util.Collections;
 import java.util.Optional;
 
+//Thanks to https://github.com/owlcs/owlapi/wiki/Documentation
 public class OWLOntologyUtils {
     private OWLOntology ontology;
     private OWLOntologyManager owlOntologyManager;
