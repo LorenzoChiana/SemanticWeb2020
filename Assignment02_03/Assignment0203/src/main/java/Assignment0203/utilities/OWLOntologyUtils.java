@@ -22,6 +22,9 @@ public class OWLOntologyUtils {
     }
 
     // getters of OWLOntologyManager, OWLEntityRemover and OWLDataFactory
+    public OWLOntology getOntology() {
+        return ontology;
+    }
     public OWLOntologyManager getOntologyManager() {
         return this.owlOntologyManager;
     }
