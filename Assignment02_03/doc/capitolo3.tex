@@ -1,5 +1,5 @@
 \chapter{Tecnologie}
-In questo capitolo si vanno ad affrontare tutte le tecnologie utilizzate in questo progetto quali: RDF, RDFS, OWL, OWLAPI, ...; dando anche una loro spiegazione.
+In questo capitolo si vanno ad affrontare tutte le tecnologie utilizzate in questo progetto quali: RDF, RDFS, OWL, OWLAPI, SWRL; dando anche una loro spiegazione.
 \section{RDF}
 \index{RDF}
 Resource Description Framework o, abbreviato, RDF \`e lo strumento base proposto da W3C per la codifica, lo scambio e il riutilizzo di metadati strutturati che permette di descrivere le relazioni fra le entit\`a della parte di realt\`a che si vuole modellare.
@@ -29,3 +29,15 @@ I componenti principali di un'ontologia OWL sono tre: individui, propriet\`a e c
 OWLAPI \`e un'API per Java 8 nata per la creazione, la manipolazione e la serializzazione di ontologie OWL.
 L'ultima versione si focalizza su OWL 2.
 Vi \`e una ampia documentazione con tanto di esempi pratici nel loro repository (\url{https://github.com/owlcs/owlapi/wiki/Documentation}).
+
+\section{SWRL}
+\index{SWRL}
+SWRL, acronico di Semantic Web Rule Language, \`e un linguaggio che consente la creazione di regole espresse in termini di concetti OWL (classi, propriet\`a, individuals).
+Ci\`o fornisce una capacit\`a di ragionamento deduttivo pi\`u potente al solo utilizzo di OWL. 
+SWRL supporta solo l'inferenza monotonica:
+\begin{itemize}
+\item le regole non possono essere utilizzate per modificare le informazioni esistenti in un'ontologia;
+\item le regole non possono ritirare o rimuovere informazioni da un'ontologia.
+\end{itemize}
+Una regola SWRL \`e composta da una parte antecedente (il corpo) e da una parte conseguente (la testa), entrambi costituiti da congiunzioni positive di atomi.
+Un atomo \`e espresso nella seguente forma: p(arg1, arg2, ..., argN) dove p \`e il simbolo del predicato e tra parentesi vi sono gli argomenti dell'espressione.\cite{swrl}

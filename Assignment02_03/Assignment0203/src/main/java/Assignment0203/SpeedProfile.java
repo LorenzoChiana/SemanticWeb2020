@@ -3,7 +3,6 @@ package Assignment0203;
 import org.semanticweb.owlapi.model.OWLClass;
 
 public class SpeedProfile {
-    // Classi di Assignment0203.SpeedProfile
     private OWLClass acceleration;
     private OWLClass constantSpeed;
     private OWLClass deceleration;
