@@ -26,11 +26,13 @@ Le ontologie vengono in aiuto in quanto sono le framework strutturali per la rap
 Questo progetto si pone diversi obiettivi:
 \begin{itemize}
 \item studiare, comprendere ed estendere l'ontologia già fornita da \href{http://ri-www.nii.ac.jp/index.html}{Ichise Laboratory};
-\item raggiungere i seguenti requisiti:
+\item raggiungere il seguente requisito: regolazione velocità al superamento dei limiti di velocità;
+\begin{comment}
 	\begin{itemize}
 		\item regolazione velocità al superamento dei limiti di velocità;
 		\item gestione azioni in presenza di semaforo.
 	\end{itemize}
+\end{comment}
 \item utilizzare \href{http://owlapi.sourceforge.net/}{OWL API} mediante linguaggio Java.
 \end{itemize}
 
@@ -40,6 +42,7 @@ Questo progetto si pone diversi obiettivi:
 Con questo requisito si vuole andare a modellare uno scenario in cui lungo la carreggiata il veicolo debba modificare la propria andatura per il rispetto dei limiti di velocità imposti dal regolamento stradale.
 Come si potrà notare nel prossimo capitolo (\ref{CarOnto}) un veicolo è in grado di modificare la propria andatura accelerando, decelerando o mantenendo l'andatura. Di conseguenza di vuole sfruttare ciò per modellare uno scenario dove un veicolo possa accelerare fino a una soglia massima che è il limite di velocità imposto, da lì in poi potrà solo procedere a velocità costante o decelerare.
 
+\begin{comment}
 \subsection{Gestione azioni in presenza di semaforo}
 \index{Requisito 2}
 Con questo requisito, invece, si vuole modellare uno scenario in cui il veicolo, dotato di sistema ADAS, si trova ad attraversare un passaggio con presenza semaforica.
@@ -50,3 +53,4 @@ In questo caso dovrà compiere azioni differenti a seconda del proprio stato e di
 	\item se il veicolo è in moto e il semaforo è arancione dovrà rallentare;
 	\item se il semaforo è rosso dovrà fermarsi.
 \end{itemize}
+\end{comment}

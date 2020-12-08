@@ -13,9 +13,10 @@ public class SimulationUtils {
 
     /** Create a simulation to test compliance with speed limits */
     public static OWLOntologyUtils createSpeedLimitSimulation(boolean speedWarning) {
-        OWLOntologyUtils myOnto = SimulationUtils.createMyControlDataOntology();
-        SimulationUtils.createMyCarRoute(myOnto);
-        SimulationUtils.createSpeedLimitSWRLRule(myOnto, speedWarning);
+        OWLOntologyUtils myOnto = SimulationUtils.createMyOntology();
+        initClasses(myOnto);
+        createMyCarRoute(myOnto);
+        createSpeedLimitSWRLRule(myOnto, speedWarning);
         myOnto.addAxiom(OntologyUtils.createObjectPropertyAssertionAxiom(
                 MyCar.getInstance().getMyCarIndividual(),
                 Control.getInstance().getOverSpeedWarningThan(),
@@ -25,7 +26,7 @@ public class SimulationUtils {
     }
 
     /** Creates a new ontology */
-    private static OWLOntologyUtils createMyControlDataOntology() {
+    private static OWLOntologyUtils createMyOntology() {
         //creation of new empty ontology
         OWLOntologyUtils onto = OntologyUtils.newEmptyOntology(myOntologyIRI).get();
         OntologyUtils.setOntology(onto);
@@ -35,23 +36,27 @@ public class SimulationUtils {
         onto.importOntology(controlOntoIRI);
         onto.importOntology(mapOntoIRI);
 
+        return onto;
+    }
+
+    /** Initialization of classes */
+    private static void initClasses(OWLOntologyUtils onto) {
         //creation of road segment with 2 lanes
         MapUtils.addRoadSegment();
         MapUtils.connectObjectPropertiesToRoadSegment(onto);
-
-        //creation class and properties for SWRL about speed
-        ControlUtils.addClassForSpeedSWRLRules();
-        ControlUtils.connectPropertiesForSpeedSWRLRules();
 
         //creation of my car
         MyCarUtils.addMyCar();
         MyCarUtils.connectPropertiesToMyCar(onto);
 
+        //creation class and properties for SWRL about speed
+        ControlUtils.addClassForSpeedSWRLRules();
+        ControlUtils.connectPropertiesForSpeedSWRLRules();
+
         //set the speed profile and speed limit
         SpeedProfileUtils.addSpeedProfile();
         MapUtils.addSpeedLimit();
         MapUtils.connectSpeedMaxProperty(onto);
-        return onto;
     }
 
     /** Creates new route */

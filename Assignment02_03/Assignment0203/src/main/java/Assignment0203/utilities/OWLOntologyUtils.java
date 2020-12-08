@@ -25,7 +25,9 @@ public class OWLOntologyUtils {
     public OWLOntology getOntology() {
         return ontology;
     }
-
+    public OWLOntologyManager getOwlOntologyManager() {
+        return this.owlOntologyManager;
+    }
     public OWLDataFactory getDataFactory() {
         return this.owlDataFactory;
     }

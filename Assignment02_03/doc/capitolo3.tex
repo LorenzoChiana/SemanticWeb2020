@@ -1,5 +1,5 @@
 \chapter{Tecnologie}
-In questo capitolo si vanno ad affrontare tutte le tecnologie utilizzate in questo progetto quali: RDF, RDFS, OWL, OWLAPI, SWRL; dando anche una loro spiegazione.
+In questo capitolo si vanno ad affrontare tutte le tecnologie utilizzate in questo progetto quali: RDF, RDFS, OWL, OWLAPI, SWRL, HermiT OWL Reasoner; dando anche una loro spiegazione.
 \section{RDF}
 \index{RDF}
 Resource Description Framework o, abbreviato, RDF \`e lo strumento base proposto da W3C per la codifica, lo scambio e il riutilizzo di metadati strutturati che permette di descrivere le relazioni fra le entit\`a della parte di realt\`a che si vuole modellare.
@@ -41,3 +41,31 @@ SWRL supporta solo l'inferenza monotonica:
 \end{itemize}
 Una regola SWRL \`e composta da una parte antecedente (il corpo) e da una parte conseguente (la testa), entrambi costituiti da congiunzioni positive di atomi.
 Un atomo \`e espresso nella seguente forma: p(arg1, arg2, ..., argN) dove p \`e il simbolo del predicato e tra parentesi vi sono gli argomenti dell'espressione.\cite{swrl}
+
+Esempi applicati al progetto:\\
+\textbf{Mantenere una velocit\`a costante}\\
+\begin{center}
+\emph{isRunningOn(?X, ?Lane) $\char`\^$ OneWayLane(?Lane) $\char`\^$ SpeedLimit(?Y) $\char`\^$ overSpeedWarningThan(?X, ?Y) $\rightarrow$ constantSpeed(?X)}\\
+\end{center}
+In questo caso il body \`e rappresentato da tutto ci\`o che \`e antecedente alla freccia e la head da ci\`o che ne viene dopo.
+Con questa regola il reasoner inferir\`a che se la head risulta vera allora anche il body lo sar\`a.
+Nello specifico se esiste una tripla che:
+\begin{enumerate}
+\item associa le variabili \textit{X} e \textit{Lane} con la propriet\`a \textit{isRunningOn};
+\item \textit{Lane} \`e istanza della classe \textit{OneWayLane};
+\item \textit{Y} \`e istanza della classe \textit{SpeedLimit};
+\item associa \textit{X} e \textit{Y} alla propriet\`a \textit{overSpeedWarningThan};
+\end{enumerate}
+allora \textit{X} deve mantenere una velocit\`a costante.\\
+\textbf{Accelerare}\\
+\begin{center}
+\emph{isRunningOn(?X, ?Lane) $\char`\^$ OneWayLane(?Lane) $\rightarrow$ acceleration(?X)}\\
+\end{center}
+In questo caso la tripla che deve esistere per far s\`i che \textit{X} acceleri deve associare le variabili \textit{X} e \textit{Lane} con la propriet\`a \textit{isRunningOn} e che \textit{Lane} sia istanza di \textit{OneWayLane}.
+
+\section{HermiT OWL Reasoner}
+\index{HermiT}
+HermiT \`e un reasoner per ontologie scritto in OWL.
+Data una ontologia OWL HermiT \`e in grado di determinare se essa sia coerente o meno, identificare le relazioni di inclusione tra le classi e molto altro.
+HermiT \`e il primo reasoner OWL disponibile pubblicamente basato sul nuovo calcolo ``hypertableau'' che fornisce un ragionamento molto pi\`u efficiente di qualsiasi algoritmo precedentemente noto. \cite{hermit}
+Per i motivi sopracitati e per la grande disponibilit\`a di esempi trovati online anche, e soprattutto, dei vari esempi nella documentazione all'interno del Wiki del repository ufficiale di OWLAPI, la scelta del reasoner \`e ricaduta su HermiT.
