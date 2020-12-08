@@ -10,7 +10,7 @@ import static Assignment0203.utilities.IRIs.*;
 
 public class Main {
     public static void main(String[] args) {
-        OWLOntologyUtils myOnto = SimulationUtils.createSpeedLimitSimulation();
+        OWLOntologyUtils myOnto = SimulationUtils.createSpeedLimitSimulation(true);
 
         OWLReasoner reasoner = ReasonerUtils.newReasoner(myOnto.getOntology());
         if(!reasoner.isConsistent()) {

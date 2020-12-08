@@ -12,10 +12,15 @@ import static Assignment0203.utilities.IRIs.*;
 public class SimulationUtils {
 
     /** Create a simulation to test compliance with speed limits */
-    public static OWLOntologyUtils createSpeedLimitSimulation() {
+    public static OWLOntologyUtils createSpeedLimitSimulation(boolean speedWarning) {
         OWLOntologyUtils myOnto = SimulationUtils.createMyControlDataOntology();
         SimulationUtils.createMyCarRoute(myOnto);
-        SimulationUtils.createSpeedLimitSWRLRule(myOnto, true);
+        SimulationUtils.createSpeedLimitSWRLRule(myOnto, speedWarning);
+        myOnto.addAxiom(OntologyUtils.createObjectPropertyAssertionAxiom(
+                MyCar.getInstance().getMyCarIndividual(),
+                Control.getInstance().getOverSpeedWarningThan(),
+                Map.getInstance().getSpeedLimit()
+        ));
         return myOnto;
     }
 
@@ -83,12 +88,12 @@ public class SimulationUtils {
         body.add(OneWayLane_Lane);
 
         if(speedWarning) {
-            // isRunningOn(?X, ?Lane) ^ OneWayLane(?Lane) ^ SpeedLimit(?Y) ^ overSpeedWarningRespectTo(?X, ?Y)
+            // isRunningOn(?X, ?Lane) ^ OneWayLane(?Lane) ^ SpeedLimit(?Y) ^ overSpeedWarningThan(?X, ?Y)
             body.add(SpeedLimit_Y);
             body.add(overSpeedWarningThan_X_Y);
         }
 
-        // isRunningOn(?X, ?Lane) ^ OneWayLane(?Lane) ^ SpeedLimit(?Y) ^ overSpeedWarningRespectTo(?X, ?Y) -> constantSpeed(?X)
+        // isRunningOn(?X, ?Lane) ^ OneWayLane(?Lane) ^ SpeedLimit(?Y) ^ overSpeedWarningThan(?X, ?Y) -> constantSpeed(?X)
         // isRunningOn(?X, ?Lane) ^ OneWayLane(?Lane) -> acceleration(?X)
         head = (speedWarning) ? SWRLUtils.createSWRLClassAtom(SpeedProfile.getInstance().getConstantSpeed(), varX) : SWRLUtils.createSWRLClassAtom(SpeedProfile.getInstance().getAcceleration(), varX);
 
