@@ -18,7 +18,7 @@ public class IRIs {
     public final static IRI oneWayLaneIRI = IRI.create(mapOntoString + "#OneWayLane");
     public final static IRI speedLimitIRI = IRI.create((mapOntoString + "#SpeedLimit"));
     //Classes of ControlOnto
-    public final static IRI overSpeedWarningIRI = IRI.create(myOntologyString + "#OverSpeedWarning");
+    public final static IRI overSpeedWarningIRI = IRI.create(controlOntoIRI + "#OverSpeedWarning");
     public final static IRI startNodeIRI = IRI.create(controlOntoIRI + "#StartNode");
     public final static IRI endNodeIRI = IRI.create(controlOntoIRI + "#EndNode");
     //Classes of CarOnto
@@ -28,13 +28,14 @@ public class IRIs {
     public final static IRI decelerationIRI = IRI.create(carOntoString + "#Deceleration");
     //Individuals
     public final static IRI individualRoadSegment = IRI.create(myOntologyString + "#individualRoadSegment");
-    public final static IRI individualRoadSegmentCarriagewayR = IRI.create(myOntologyString + "#individualRoadSegmentCarriagewayR");
-    public final static IRI individualRoadSegmentCarriagewayL = IRI.create(myOntologyString + "#individualRoadSegmentCarriagewayL");
+    public final static IRI individualRoadSegmentLaneR = IRI.create(myOntologyString + "#individualRoadSegmentLaneR");
+    public final static IRI individualRoadSegmentLaneL = IRI.create(myOntologyString + "#individualRoadSegmentLaneL");
     public final static IRI individualMyCarIRI = IRI.create(myOntologyString + "#lorenzoCar");
     public final static IRI individualSpeedLimit = IRI.create(myOntologyString + "#speedLimit");
     //Properties
     public final static IRI hasLaneIRI = IRI.create(mapOntoString + "#hasLane");
     public final static IRI isLaneOfIRI = IRI.create(mapOntoString + "#isLaneOf");
+    public final static IRI goStraightToIRI = IRI.create(mapOntoString + "#goStraightTo");
     public final static IRI overSpeedWarningThanIRI = IRI.create(myOntologyString + "#overSpeedWarningThan");
     public final static IRI isRunningOnIRI = IRI.create(carOntoString + "#isRunningOn");
     public final static IRI carIdIRI = IRI.create(carOntoString + "#carID");
@@ -42,5 +43,8 @@ public class IRIs {
     public final static IRI nextPathSegmentIRI = IRI.create(controlOntoString + "#nextPathSegment");
     public final static IRI pathSegmentIDIRI = IRI.create(controlOntoString + "#pathSegmentID");
 
-
+    //SWRL vars
+    public final static IRI varXIRI = IRI.create(myOntologyString + "#X");
+    public final static IRI varYIRI = IRI.create(myOntologyString + "#Y");
+    public final static IRI varLaneIRI = IRI.create(myOntologyString + "#LANE");
 }

@@ -10,10 +10,7 @@ public class SpeedProfile {
     private static SpeedProfile speedProfileOnto;
 
     public static SpeedProfile getInstance() {
-        if(speedProfileOnto == null) {
-            speedProfileOnto = new SpeedProfile();
-        }
-        return speedProfileOnto;
+        return (speedProfileOnto == null) ? speedProfileOnto = new SpeedProfile() : speedProfileOnto;
     }
 
     public OWLClass getAcceleration() {

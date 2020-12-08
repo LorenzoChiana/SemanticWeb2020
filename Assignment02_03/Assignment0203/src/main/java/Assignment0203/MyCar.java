@@ -14,10 +14,7 @@ public class MyCar {
     private static MyCar myCarOnto;
 
     public static MyCar getInstance() {
-        if(myCarOnto == null) {
-            myCarOnto = new MyCar();
-        }
-        return myCarOnto;
+        return (myCarOnto == null) ? myCarOnto = new MyCar() : myCarOnto;
     }
 
     public OWLClass getMyCar() {

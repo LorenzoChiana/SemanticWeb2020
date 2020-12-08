@@ -17,23 +17,18 @@ public class Map {
     private RoadSegment roadSegment;
 
     //Object properties
-    private OWLObjectProperty goStraightTo;
     private OWLObjectProperty hasLane;
     private OWLObjectProperty isConnectedTo;
     private OWLObjectProperty isLaneOf;
-    private OWLObjectProperty turnLeftTo;
-    private OWLObjectProperty turnRightTo;
+    private OWLObjectProperty goStraightTo;
 
     //Data property
     private OWLDataProperty speedMax;
 
-    private static Map myMapOnto;
+    private static Map mapOnto = null;
 
     public static Map getInstance() {
-        if(myMapOnto == null) {
-            myMapOnto = new Map();
-        }
-        return myMapOnto;
+        return (mapOnto == null) ? mapOnto = new Map() : mapOnto;
     }
 
     public OWLClass getClassRoadSegment() {
@@ -68,14 +63,6 @@ public class Map {
         this.speedLimit = speedLimit;
     }
 
-    public OWLObjectProperty getGoStraightTo() {
-        return goStraightTo;
-    }
-
-    public void setGoStraightTo(OWLObjectProperty goStraightTo) {
-        this.goStraightTo = goStraightTo;
-    }
-
     public OWLObjectProperty getHasLane() {
         return hasLane;
     }
@@ -100,22 +87,6 @@ public class Map {
         this.isLaneOf = isLaneOf;
     }
 
-    public OWLObjectProperty getTurnLeftTo() {
-        return turnLeftTo;
-    }
-
-    public void setTurnLeftTo(OWLObjectProperty turnLeftTo) {
-        this.turnLeftTo = turnLeftTo;
-    }
-
-    public OWLObjectProperty getTurnRightTo() {
-        return turnRightTo;
-    }
-
-    public void setTurnRightTo(OWLObjectProperty turnRightTo) {
-        this.turnRightTo = turnRightTo;
-    }
-
     public OWLDataProperty getSpeedMax() {
         return speedMax;
     }
@@ -130,5 +101,13 @@ public class Map {
 
     public void setRoadSegment(RoadSegment roadSegment) {
         this.roadSegment = roadSegment;
+    }
+
+    public OWLObjectProperty getGoStraightTo() {
+        return goStraightTo;
+    }
+
+    public void setGoStraightTo(OWLObjectProperty goStraightTo) {
+        this.goStraightTo = goStraightTo;
     }
 }

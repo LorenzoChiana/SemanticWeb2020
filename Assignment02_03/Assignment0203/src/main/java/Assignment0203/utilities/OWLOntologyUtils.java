@@ -9,10 +9,10 @@ import java.util.Optional;
 
 //Thanks to https://github.com/owlcs/owlapi/wiki/Documentation
 public class OWLOntologyUtils {
-    private OWLOntology ontology;
-    private OWLOntologyManager owlOntologyManager;
-    private OWLEntityRemover owlEntityRemover;
-    private OWLDataFactory owlDataFactory;
+    private final OWLOntology ontology;
+    private final OWLOntologyManager owlOntologyManager;
+    private final OWLEntityRemover owlEntityRemover;
+    private final OWLDataFactory owlDataFactory;
 
     public OWLOntologyUtils(OWLOntology ontology) {
         this.ontology = ontology;
@@ -25,21 +25,9 @@ public class OWLOntologyUtils {
     public OWLOntology getOntology() {
         return ontology;
     }
-    public OWLOntologyManager getOntologyManager() {
-        return this.owlOntologyManager;
-    }
-    public OWLEntityRemover getEntityRemover() {
-        return this.owlEntityRemover;
-    }
+
     public OWLDataFactory getDataFactory() {
         return this.owlDataFactory;
-    }
-
-    /**
-     * @return the number of imported declarations
-     */
-    public long numImportedOntologies() {
-        return ontology.importsDeclarations().count();
     }
 
     /**
@@ -60,19 +48,17 @@ public class OWLOntologyUtils {
     /** Imports a new ontology from IRI
      *
      * @param ontologyIRI the IRI of ontology
-     * @return true if successful
      */
-    public boolean importOntology(IRI ontologyIRI) {
-        return owlOntologyManager.applyChange(new AddImport(ontology, owlDataFactory.getOWLImportsDeclaration(ontologyIRI))).equals(ChangeApplied.SUCCESSFULLY);
+    public void importOntology(IRI ontologyIRI) {
+        owlOntologyManager.applyChange(new AddImport(ontology, owlDataFactory.getOWLImportsDeclaration(ontologyIRI)));
     }
 
     /** Add a new axiom to ontology manager
      *
      * @param axiom the new axiom to add
-     * @return true if successful
      */
-    public boolean addAxiom(OWLAxiom axiom) {
-        return owlOntologyManager.applyChange(new AddAxiom(ontology, axiom)).equals(ChangeApplied.SUCCESSFULLY);
+    public void addAxiom(OWLAxiom axiom) {
+        owlOntologyManager.applyChange(new AddAxiom(ontology, axiom));
     }
 
     /** Removes an axiom to ontology
@@ -84,12 +70,4 @@ public class OWLOntologyUtils {
         return ontology.remove(axiom) != null;
     }
 
-    /** Prints all ontology */
-    public void printlnOntology() {
-        try {
-            this.owlOntologyManager.saveOntology(ontology, System.out);
-        } catch (OWLOntologyStorageException e) {
-            e.printStackTrace();
-        }
-    }
 }

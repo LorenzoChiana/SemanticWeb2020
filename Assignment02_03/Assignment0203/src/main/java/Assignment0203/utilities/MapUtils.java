@@ -7,19 +7,19 @@ import org.semanticweb.owlapi.model.*;
 import static Assignment0203.utilities.IRIs.*;
 
 public class MapUtils {
-    private static final Map mapData = Map.getInstance();
+    private static final Map map = Map.getInstance();
 
     /** Creates a road segment */
     public static void addRoadSegment() {
         OWLClass classRoadSegment = OntologyUtils.createClass(roadSegmentIRI);
         OWLClass classOneWayLane = OntologyUtils.createClass(oneWayLaneIRI);
-        mapData.setClassRoadSegment(classRoadSegment);
-        mapData.setClassOneWayLane(classOneWayLane);
-        mapData.setRoadSegment(
+        map.setClassRoadSegment(classRoadSegment);
+        map.setClassOneWayLane(classOneWayLane);
+        map.setRoadSegment(
                 new RoadSegment(
                         OntologyUtils.createIndividualAndSetHisType(individualRoadSegment, classRoadSegment),
-                        OntologyUtils.createIndividualAndSetHisType(individualRoadSegmentCarriagewayR, classOneWayLane),
-                        OntologyUtils.createIndividualAndSetHisType(individualRoadSegmentCarriagewayL, classOneWayLane)
+                        OntologyUtils.createIndividualAndSetHisType(individualRoadSegmentLaneR, classOneWayLane),
+                        OntologyUtils.createIndividualAndSetHisType(individualRoadSegmentLaneL, classOneWayLane)
                 )
         );
     }
@@ -31,30 +31,38 @@ public class MapUtils {
     public static void connectObjectPropertiesToRoadSegment(OWLOntologyUtils ontology) {
         OWLObjectProperty hasLane = OntologyUtils.createObjectProperty(hasLaneIRI);
         OWLObjectProperty isLaneOf = OntologyUtils.createObjectProperty(isLaneOfIRI);
-        mapData.setHasLane(hasLane);
-        mapData.setIsLaneOf(isLaneOf);
+        OWLObjectProperty goStraightTo = OntologyUtils.createObjectProperty(goStraightToIRI);
+        map.setHasLane(hasLane);
+        map.setIsLaneOf(isLaneOf);
+        map.setGoStraightTo(goStraightTo);
         /* new axioms:
             hasLane is inverse of isLaneOf
             the road segment has a right lane and a left one
          */
         ontology.addAxiom(OntologyUtils.createInverseObjectProperty(hasLane, isLaneOf));
         ontology.addAxiom(OntologyUtils.createObjectPropertyAssertionAxiom(
-                mapData.getRoadSegment().getRoad(),
+                map.getRoadSegment().getRoad(),
                 hasLane,
-                mapData.getRoadSegment().getLaneRight())
+                map.getRoadSegment().getLaneRight())
         );
         ontology.addAxiom(OntologyUtils.createObjectPropertyAssertionAxiom(
-                mapData.getRoadSegment().getRoad(),
+                map.getRoadSegment().getRoad(),
                 hasLane,
-                mapData.getRoadSegment().getLaneLeft())
+                map.getRoadSegment().getLaneLeft())
         );
+
+        ontology.addAxiom(OntologyUtils.createObjectPropertyAssertionAxiom(
+                map.getRoadSegment().getLaneRight(),
+                goStraightTo,
+                map.getRoadSegment().getLaneRight()
+        ));
     }
 
     /** Creates class for speed limit */
     public static void addSpeedLimit() {
         OWLClass speedLimitClass = OntologyUtils.createClass(speedLimitIRI);
-        mapData.setClassSpeedLimit(speedLimitClass);
-        mapData.setSpeedLimit(OntologyUtils.createIndividualAndSetHisType(individualSpeedLimit, speedLimitClass));
+        map.setClassSpeedLimit(speedLimitClass);
+        map.setSpeedLimit(OntologyUtils.createIndividualAndSetHisType(individualSpeedLimit, speedLimitClass));
     }
 
     /** Connects the data property speedMax
@@ -63,11 +71,11 @@ public class MapUtils {
      */
     public static void connectSpeedMaxProperty(OWLOntologyUtils ontology) {
         OWLDataProperty speedMax = OntologyUtils.createDataProperty(speedMaxIRI);
-        mapData.setSpeedMax(speedMax);
+        map.setSpeedMax(speedMax);
         // new axiom: 50km/h is the new speed limit
         ontology.addAxiom(OntologyUtils.createDataPropertyAxiom(
                 speedMax,
-                mapData.getSpeedLimit(),
+                map.getSpeedLimit(),
                 "50"
         ));
     }
