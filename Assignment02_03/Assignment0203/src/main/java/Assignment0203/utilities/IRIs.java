@@ -19,6 +19,7 @@ public class IRIs {
     public final static IRI speedLimitIRI = IRI.create((mapOntoString + "#SpeedLimit"));
     //Classes of ControlOnto
     public final static IRI overSpeedWarningIRI = IRI.create(controlOntoIRI + "#OverSpeedWarning");
+    public final static IRI goForwardIRI = IRI.create(controlOntoIRI + "#GoForward");
     public final static IRI startNodeIRI = IRI.create(controlOntoIRI + "#StartNode");
     public final static IRI endNodeIRI = IRI.create(controlOntoIRI + "#EndNode");
     //Classes of CarOnto
@@ -27,9 +28,12 @@ public class IRIs {
     public final static IRI constantSpeedIRI = IRI.create(carOntoString + "#ConstantSpeed");
     public final static IRI decelerationIRI = IRI.create(carOntoString + "#Deceleration");
     //Individuals
-    public final static IRI individualRoadSegment = IRI.create(myOntologyString + "#individualRoadSegment");
-    public final static IRI individualRoadSegmentLaneR = IRI.create(myOntologyString + "#individualRoadSegmentLaneR");
-    public final static IRI individualRoadSegmentLaneL = IRI.create(myOntologyString + "#individualRoadSegmentLaneL");
+    public final static IRI individualRoadSegment1 = IRI.create(myOntologyString + "#individualRoadSegment1");
+    public final static IRI individualRoadSegment1LaneR = IRI.create(myOntologyString + "#individualRoadSegment1LaneR");
+    public final static IRI individualRoadSegment1aneL = IRI.create(myOntologyString + "#individualRoadSegment1LaneL");
+    public final static IRI individualRoadSegment2 = IRI.create(myOntologyString + "#individualRoadSegment2");
+    public final static IRI individualRoadSegment2LaneR = IRI.create(myOntologyString + "#individualRoadSegment2LaneR");
+    public final static IRI individualRoadSegment2LaneL = IRI.create(myOntologyString + "#individualRoadSegment2LaneL");
     public final static IRI individualMyCarIRI = IRI.create(myOntologyString + "#lorenzoCar");
     public final static IRI individualSpeedLimit = IRI.create(myOntologyString + "#speedLimit");
     //Properties
@@ -47,4 +51,5 @@ public class IRIs {
     public final static IRI varXIRI = IRI.create(myOntologyString + "#X");
     public final static IRI varYIRI = IRI.create(myOntologyString + "#Y");
     public final static IRI varLaneIRI = IRI.create(myOntologyString + "#LANE");
+    public final static IRI varNextLaneIRI = IRI.create(myOntologyString + "#NEXTLANE");
 }

@@ -1,13 +1,9 @@
-import Assignment0203.Control;
-import Assignment0203.Map;
 import Assignment0203.MyCar;
 import Assignment0203.SpeedProfile;
 import Assignment0203.utilities.OWLOntologyUtils;
-import Assignment0203.utilities.OntologyUtils;
 import Assignment0203.utilities.ReasonerUtils;
 import Assignment0203.utilities.SimulationUtils;
 import org.junit.Test;
-import org.semanticweb.owlapi.model.OWLObjectPropertyAssertionAxiom;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 
 import static org.junit.Assert.assertFalse;

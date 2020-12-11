@@ -1,6 +1,6 @@
 package Assignment0203.utilities;
 
-import Assignment0203.Control;
+import Assignment0203.PathControl;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
@@ -10,16 +10,17 @@ import java.util.List;
 
 import static Assignment0203.utilities.IRIs.*;
 
-public class ControlUtils {
-    private final static Control controlData = Control.getInstance();
+public class PathControlUtils {
+    private final static PathControl pathControl = PathControl.getInstance();
 
-    /** Creates the classes for the swrl rules about speed */
-    public static void addClassForSpeedSWRLRules() {
-        controlData.setOverSpeedWarning(OntologyUtils.createClass(overSpeedWarningIRI));
+    /** Creates the classes for the swrl rules about speed and go forward */
+    public static void addClassForSpeedAndGoForwardSWRLRules() {
+        pathControl.setOverSpeedWarning(OntologyUtils.createClass(overSpeedWarningIRI));
+        pathControl.setGoForward(OntologyUtils.createClass(goForwardIRI));
     }
     /** Creates the properties for the swrl rules about speed */
     public static void connectPropertiesForSpeedSWRLRules(){
-        controlData.setOverSpeedWarningThan(OntologyUtils.createObjectProperty(overSpeedWarningThanIRI));
+        pathControl.setOverSpeedWarningThan(OntologyUtils.createObjectProperty(overSpeedWarningThanIRI));
     }
 
     /** Creates the route sequence (startNode to endNode)
@@ -32,15 +33,15 @@ public class ControlUtils {
         OWLClass classStartNode = OntologyUtils.createClass(startNodeIRI);
         OWLClass classEndNode = OntologyUtils.createClass(endNodeIRI);
 
-        controlData.setNextPathSegment(nextPathSegment);
-        controlData.setStartLane(classStartNode);
-        controlData.setEndLane(classEndNode);
+        pathControl.setNextPathSegment(nextPathSegment);
+        pathControl.setStartLane(classStartNode);
+        pathControl.setEndLane(classEndNode);
 
         //connect start and end road segments for the route
         ontology.addAxiom(OntologyUtils.createClassAssertionAxiom(classStartNode, newSequence.get(0)));
         ontology.addAxiom(OntologyUtils.createClassAssertionAxiom(classEndNode, newSequence.get(newSequence.size()-1)));
 
-        controlData.setPathSegmentID(pathSegmentID);
+        pathControl.setPathSegmentID(pathSegmentID);
         for(int i = 0; i <= newSequence.size() - 1; i++) {
             // new axiom: the path segment i+1 is the nextPathSegment of path segment i
             if(i != newSequence.size() - 1){

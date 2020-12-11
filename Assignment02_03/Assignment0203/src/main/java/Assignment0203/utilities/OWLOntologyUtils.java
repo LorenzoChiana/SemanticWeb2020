@@ -72,4 +72,13 @@ public class OWLOntologyUtils {
         return ontology.remove(axiom) != null;
     }
 
+    /** Prints all ontology */
+    public void printOntology() {
+        try {
+            this.owlOntologyManager.saveOntology(ontology, System.out);
+        } catch (OWLOntologyStorageException e) {
+            System.out.println("Error: cannot print ontology");
+        }
+    }
+
 }

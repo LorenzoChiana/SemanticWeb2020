@@ -1,6 +1,6 @@
 package Assignment0203.utilities;
 
-import Assignment0203.Control;
+import Assignment0203.PathControl;
 import Assignment0203.MyCar;
 import org.semanticweb.HermiT.ReasonerFactory;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
@@ -38,7 +38,11 @@ public class ReasonerUtils {
      * @return the start node
      */
     public static NodeSet<OWLNamedIndividual> getStartNode(OWLReasoner reasoner) {
-        return reasoner.getInstances(Control.getInstance().getStartLane());
+        return reasoner.getInstances(PathControl.getInstance().getStartLane());
+    }
+
+    public static NodeSet<OWLNamedIndividual> where(OWLReasoner reasoner) {
+        return reasoner.getInstances(PathControl.getInstance().getGoForward());
     }
 
     /** Gets the end node
@@ -47,6 +51,6 @@ public class ReasonerUtils {
      * @return the end node
      */
     public static NodeSet<OWLNamedIndividual> getEndNode(OWLReasoner reasoner) {
-        return reasoner.getInstances(Control.getInstance().getEndLane());
+        return reasoner.getInstances(PathControl.getInstance().getEndLane());
     }
 }

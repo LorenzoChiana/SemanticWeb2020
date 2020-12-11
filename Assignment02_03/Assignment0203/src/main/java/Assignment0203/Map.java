@@ -14,7 +14,10 @@ public class Map {
     private OWLClass classSpeedLimit;
 
     private OWLNamedIndividual speedLimit;
-    private RoadSegment roadSegment;
+
+    //Road segments from start to stop
+    private RoadSegment roadSegmentStart;
+    private RoadSegment roadSegmentStop;
 
     //Object properties
     private OWLObjectProperty hasLane;
@@ -95,12 +98,12 @@ public class Map {
         this.speedMax = speedMax;
     }
 
-    public RoadSegment getRoadSegment() {
-        return roadSegment;
+    public RoadSegment getRoadSegmentStart() {
+        return roadSegmentStart;
     }
 
-    public void setRoadSegment(RoadSegment roadSegment) {
-        this.roadSegment = roadSegment;
+    public void setRoadSegmentStart(RoadSegment roadSegmentStart) {
+        this.roadSegmentStart = roadSegmentStart;
     }
 
     public OWLObjectProperty getGoStraightTo() {
@@ -109,5 +112,13 @@ public class Map {
 
     public void setGoStraightTo(OWLObjectProperty goStraightTo) {
         this.goStraightTo = goStraightTo;
+    }
+
+    public RoadSegment getRoadSegmentStop() {
+        return roadSegmentStop;
+    }
+
+    public void setRoadSegmentStop(RoadSegment roadSegmentStop) {
+        this.roadSegmentStop = roadSegmentStop;
     }
 }

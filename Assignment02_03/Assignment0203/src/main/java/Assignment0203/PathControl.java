@@ -4,7 +4,7 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 
-public class Control {
+public class PathControl {
     // Path > PathSegment > LaneSegment
     private OWLClass startLane;
     private OWLClass endLane;
@@ -14,6 +14,8 @@ public class Control {
     private OWLClass redStop;
     private OWLClass yellow;*/
 
+    private OWLClass goForward;
+
     // Warnings
     private OWLClass overSpeedWarning;
 
@@ -22,10 +24,10 @@ public class Control {
     private OWLObjectProperty nextPathSegment;
     private OWLDataProperty pathSegmentID;
 
-    private static Control controlOnto = null;
+    private static PathControl pathControlOnto = null;
 
-    public static Control getInstance() {
-        return (controlOnto == null) ? controlOnto = new Control() : controlOnto;
+    public static PathControl getInstance() {
+        return (pathControlOnto == null) ? pathControlOnto = new PathControl() : pathControlOnto;
     }
 
     public OWLClass getStartLane() {
@@ -74,5 +76,13 @@ public class Control {
 
     public void setPathSegmentID(OWLDataProperty pathSegmentID) {
         this.pathSegmentID = pathSegmentID;
+    }
+
+    public OWLClass getGoForward() {
+        return goForward;
+    }
+
+    public void setGoForward(OWLClass goForward) {
+        this.goForward = goForward;
     }
 }

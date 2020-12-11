@@ -15,11 +15,18 @@ public class MapUtils {
         OWLClass classOneWayLane = OntologyUtils.createClass(oneWayLaneIRI);
         map.setClassRoadSegment(classRoadSegment);
         map.setClassOneWayLane(classOneWayLane);
-        map.setRoadSegment(
+        map.setRoadSegmentStart(
                 new RoadSegment(
-                        OntologyUtils.createIndividualAndSetHisType(individualRoadSegment, classRoadSegment),
-                        OntologyUtils.createIndividualAndSetHisType(individualRoadSegmentLaneR, classOneWayLane),
-                        OntologyUtils.createIndividualAndSetHisType(individualRoadSegmentLaneL, classOneWayLane)
+                        OntologyUtils.createIndividualAndSetHisType(individualRoadSegment1, classRoadSegment),
+                        OntologyUtils.createIndividualAndSetHisType(individualRoadSegment1LaneR, classOneWayLane),
+                        OntologyUtils.createIndividualAndSetHisType(individualRoadSegment1aneL, classOneWayLane)
+                )
+        );
+        map.setRoadSegmentStop(
+                new RoadSegment(
+                        OntologyUtils.createIndividualAndSetHisType(individualRoadSegment2, classRoadSegment),
+                        OntologyUtils.createIndividualAndSetHisType(individualRoadSegment2LaneR, classOneWayLane),
+                        OntologyUtils.createIndividualAndSetHisType(individualRoadSegment2LaneL, classOneWayLane)
                 )
         );
     }
@@ -41,20 +48,30 @@ public class MapUtils {
          */
         ontology.addAxiom(OntologyUtils.createInverseObjectProperty(hasLane, isLaneOf));
         ontology.addAxiom(OntologyUtils.createObjectPropertyAssertionAxiom(
-                map.getRoadSegment().getRoad(),
+                map.getRoadSegmentStart().getRoad(),
                 hasLane,
-                map.getRoadSegment().getLaneRight())
+                map.getRoadSegmentStart().getLaneRight())
         );
         ontology.addAxiom(OntologyUtils.createObjectPropertyAssertionAxiom(
-                map.getRoadSegment().getRoad(),
+                map.getRoadSegmentStart().getRoad(),
                 hasLane,
-                map.getRoadSegment().getLaneLeft())
+                map.getRoadSegmentStart().getLaneLeft())
+        );
+        ontology.addAxiom(OntologyUtils.createObjectPropertyAssertionAxiom(
+                map.getRoadSegmentStop().getRoad(),
+                hasLane,
+                map.getRoadSegmentStop().getLaneRight())
+        );
+        ontology.addAxiom(OntologyUtils.createObjectPropertyAssertionAxiom(
+                map.getRoadSegmentStop().getRoad(),
+                hasLane,
+                map.getRoadSegmentStop().getLaneLeft())
         );
 
         ontology.addAxiom(OntologyUtils.createObjectPropertyAssertionAxiom(
-                map.getRoadSegment().getLaneRight(),
+                map.getRoadSegmentStart().getLaneRight(),
                 goStraightTo,
-                map.getRoadSegment().getLaneRight()
+                map.getRoadSegmentStop().getLaneRight()
         ));
     }
 
