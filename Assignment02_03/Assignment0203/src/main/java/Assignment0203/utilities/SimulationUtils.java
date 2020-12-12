@@ -12,8 +12,8 @@ import static Assignment0203.utilities.IRIs.*;
 
 public class SimulationUtils {
 
-    /** Create a simulation to test compliance with speed limits */
-    public static OWLOntologyUtils createSpeedLimitSimulation(boolean speedWarning) {
+    /** Create the simulation */
+    public static OWLOntologyUtils createSimulation(boolean speedWarning) {
         OWLOntologyUtils myOnto = SimulationUtils.createMyOntology();
         initClasses(myOnto);
         createMyCarRoute(myOnto);
@@ -74,8 +74,6 @@ public class SimulationUtils {
         SWRLVariable varX = SWRLUtils.createSWRLVariable(varXIRI);
         SWRLVariable varY = SWRLUtils.createSWRLVariable(varYIRI);
         SWRLVariable varLane = SWRLUtils.createSWRLVariable(varLaneIRI);
-        // Head's atom: body -> head
-        SWRLClassAtom head = null;
 
         //Class atoms: OWL named class and a single argument representing an OWL individual
         // OnwWayLane(?Lane)
@@ -102,7 +100,7 @@ public class SimulationUtils {
 
         // isRunningOn(?X, ?Lane) ^ OneWayLane(?Lane) ^ SpeedLimit(?Y) ^ overSpeedWarningThan(?X, ?Y) -> constantSpeed(?X)
         // isRunningOn(?X, ?Lane) ^ OneWayLane(?Lane) -> acceleration(?X)
-        head = (speedWarning) ? SWRLUtils.createSWRLClassAtom(SpeedProfile.getInstance().getConstantSpeed(), varX) : SWRLUtils.createSWRLClassAtom(SpeedProfile.getInstance().getAcceleration(), varX);
+        SWRLClassAtom head = (speedWarning) ? SWRLUtils.createSWRLClassAtom(SpeedProfile.getInstance().getConstantSpeed(), varX) : SWRLUtils.createSWRLClassAtom(SpeedProfile.getInstance().getAcceleration(), varX);
 
         // rule creation
         SWRLRule rule = SWRLUtils.createAnonymousSWRLRule(body, Collections.singleton(head));
@@ -118,20 +116,20 @@ public class SimulationUtils {
         // isRunningOn(?X, ?Lane)
         SWRLObjectPropertyAtom isRunningOn_X_Lane = SWRLUtils.createSWRLObjectPropertyAtom(MyCar.getInstance().getIsRunningOn(), varX, varLane);
 
-        // goStraightTo(?lane, ?nextLane)
+        // goStraightTo(?Lane, ?NextLane)
         SWRLObjectPropertyAtom goStraightTo_Lane_NextLane = SWRLUtils.createSWRLObjectPropertyAtom(Map.getInstance().getGoStraightTo(), varLane, varNextLane);
         // GoForward(?X)
         SWRLClassAtom GoForward_X = SWRLUtils.createSWRLClassAtom(SegmentControl.getInstance().getGoForward(), varX);
 
-        // nextPathSegment(?lane, ?nextLane)
+        // nextPathSegment(?Lane, ?NextLane)
         SWRLObjectPropertyAtom nextPathSegment_Lane_NextLane = SWRLUtils.createSWRLObjectPropertyAtom(SegmentControl.getInstance().getNextPathSegment(), varLane, varNextLane);
 
-        // isRunningOn(?X, ?Lane) ^ goStraightTo(?lane, ?nextLane) ^ nextPathSegment(?lane, ?nextLane)
+        // isRunningOn(?X, ?Lane) ^ goStraightTo(?lane, ?NextLane) ^ nextPathSegment(?Lane, ?NextLane)
         Set<SWRLAtom> body = new HashSet<>();
         body.add(isRunningOn_X_Lane);
         body.add(goStraightTo_Lane_NextLane);
         body.add(nextPathSegment_Lane_NextLane);
-        // isRunningOn(?X, ?Lane) ^ goStraightTo(?lane, ?nextLane) ^ nextPathSegment(?lane, ?nextLane) -> GoForward(?X)
+        // isRunningOn(?X, ?Lane) ^ goStraightTo(?Lane, ?NextLane) ^ nextPathSegment(?Lane, ?NextLane) -> GoForward(?X)
         SWRLRule rule = SWRLUtils.createAnonymousSWRLRule(
                 body,
                 Collections.singleton(GoForward_X)

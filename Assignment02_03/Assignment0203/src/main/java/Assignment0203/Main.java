@@ -7,7 +7,7 @@ import org.semanticweb.owlapi.reasoner.OWLReasoner;
 
 public class Main {
     public static void main(String[] args) {
-        OWLOntologyUtils myOnto = SimulationUtils.createSpeedLimitSimulation(true);
+        OWLOntologyUtils myOnto = SimulationUtils.createSimulation(true);
 
         System.out.println("My ontology infos:");
         System.out.println("    - Number of axioms: " + myOnto.getOntology().getAxiomCount());

@@ -1,6 +1,6 @@
 \chapter{Implementazione}
 
-\section{Modellazione entit\`a}
+\section{Modellazione entit\`a}\label{modellazione}
 Di seguito verr\`a esposto come le varie entit\`a sono state modellate all'interno del progetto.
 Queste vanno a modellare e a inserire nell'ontologia i seguenti concetti:
 \begin{itemize}
@@ -61,15 +61,37 @@ Per sviluppare questo progetto sono state create diverse classi di utility tra c
 \item \textit{\textbf{IRIs}} contiene i vari IRI utilizzati all'interno del progetto;
 \end{itemize}
 
-\section{La simulazione}
-La simulazione consiste nella creazione di una strada a due corsie a senso unico nella quale viene posizione un veicolo.
-Questo veicolo viene modellato in modo tale da non superare i limiti di velocit\`a impostati arbitrariamente a 50km/h.
-\subsection{Creazione strada}
-Per la simulazione viene creata una strada composta da due segmenti (individualRoadSegment1 e individualRoadSegment2) entrambe con due corsie a senso unico.
-Per far ci\`o viene utilizzato il metodo addRoadSegment di MapUtil che aggiunge all'istanza della mappa stradale 
-\subsection{Creazione automobile}
-\subsection{Aggiunta dei limiti stradali}
+\section{La simulazione - SimulationUtils}
+La simulazione consiste nella creazione di una strada composta da due segmenti a due corsie a senso unico nella quale viene posizione un veicolo.
+Questo veicolo viene modellato in modo tale da non superare i limiti di velocit\`a, impostati arbitrariamente a 50km/h, e deve procedere dal primo segmento al secondo mantenendo la corsia di destra.
+Attraverso il metodo \textit{createSimulation} di \textit{SimulationUtils} viene creata tale simulazione inizializzando una nuova ontologia vuota con \textit{createMyOntology} e i vari singleton attraverso il metodo privato \textit{initClasses}.
+Mediante il metodo \textit{createMyCarRoute} viene creato il percorso formato da due segmenti di strada.
+Tutti questi metodi fanno uso delle classi singleton e di utility esposte in dettaglio nella sezione \ref{modellazione} per la creazione della simulazione.
+I metodi \textit{createSpeedLimitSWRLRule} e \textit{createRunDirectionRule} vanno a creare le regole SWRL rispettivamente per la gestione dei limiti di velocit\`a e della direzione di corsa che sono esposte in dettaglio nella sezione \ref{SWRLspeedlimit} e \ref{SWRLrundirection}.
+\subsection{Regole SWRL per la gestione dei limiti stradali}\label{SWRLspeedlimit}
+All'interno del metodo \textit{createSpeedLimitSWRLRule} vengono implementare le regole generali per il monitoraggio della velocit\`a. Nello specifico vengono implementate le due regole portare in esempio nella sezione dedicata a SWRL (\ref{SWRL}), ovvero:
+\begin{center}
+\emph{isRunningOn(?X, ?Lane) $\char`\^$ OneWayLane(?Lane) $\char`\^$ SpeedLimit(?Y) $\char`\^$ overSpeedWarningThan(?X, ?Y) $\rightarrow$ constantSpeed(?X)}\\
+\end{center}
+per la gestione del profilo di velocit\`a quando viene segnalato l'avviso di eccesso dei limiti e
+\begin{center}
+\emph{isRunningOn(?X, ?Lane) $\char`\^$ OneWayLane(?Lane) $\rightarrow$ acceleration(?X)}\\
+\end{center}
+invece nel caso in cui non venga segnalato l'eccesso dei limiti.
 \subsection{Test dei limiti stradali}
+\`E stata creata la classe di test \textit{SpeedLimitTest} nella quale sono stati implementati due differenti test:
+\begin{enumerate}
+\item test della simulazione senza avviso del superamento dei limiti;
+\item test della simulazione con avviso del superamento dei limiti.
+\end{enumerate}
+Nel primo caso il reasoner va a controllare se 
+\subsection{Regole SWRL per la gestione della direzione}\label{SWRLrundirection}
+All'interno del metodo \textit{createRunDirectionRule} viene implementata la regola generale per la gestione della direzione del veicolo che, in questo caso specifico, sar\`a quella di proseguire dritto.
+Tale regola \`e:
+\begin{center}
+isRunningOn(?X, ?Lane) $\char`\^$ goStraightTo(?Lane, ?NextLane) $\char`\^$ nextPathSegment(?Lane, ?NextLane) $\rightarrow$ GoForward(?X)
+\end{center}
+\subsection{Test della direzione}
 
 \section{Consistenza ontologia}
 

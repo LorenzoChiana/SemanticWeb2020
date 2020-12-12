@@ -12,7 +12,7 @@ public class GoForwardTest {
 
     @Test
     public void test1() {
-        OWLOntologyUtils onto = SimulationUtils.createSpeedLimitSimulation(true);
+        OWLOntologyUtils onto = SimulationUtils.createSimulation(true);
         OWLReasoner reasoner = ReasonerUtils.newReasoner(onto.getOntology());
 
         assertTrue("myCar must go forward.",
