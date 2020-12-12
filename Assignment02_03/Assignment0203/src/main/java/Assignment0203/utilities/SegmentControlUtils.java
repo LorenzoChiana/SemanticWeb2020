@@ -1,6 +1,6 @@
 package Assignment0203.utilities;
 
-import Assignment0203.PathControl;
+import Assignment0203.SegmentControl;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
@@ -10,8 +10,8 @@ import java.util.List;
 
 import static Assignment0203.utilities.IRIs.*;
 
-public class PathControlUtils {
-    private final static PathControl pathControl = PathControl.getInstance();
+public class SegmentControlUtils {
+    private final static SegmentControl pathControl = SegmentControl.getInstance();
 
     /** Creates the classes for the swrl rules about speed and go forward */
     public static void addClassForSpeedAndGoForwardSWRLRules() {

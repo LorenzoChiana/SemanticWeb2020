@@ -1,6 +1,6 @@
 package Assignment0203.utilities;
 
-import Assignment0203.PathControl;
+import Assignment0203.SegmentControl;
 import Assignment0203.Map;
 import Assignment0203.MyCar;
 import Assignment0203.SpeedProfile;
@@ -21,7 +21,7 @@ public class SimulationUtils {
         createSpeedLimitSWRLRule(myOnto, speedWarning);
         myOnto.addAxiom(OntologyUtils.createObjectPropertyAssertionAxiom(
                 MyCar.getInstance().getMyCarIndividual(),
-                PathControl.getInstance().getOverSpeedWarningThan(),
+                SegmentControl.getInstance().getOverSpeedWarningThan(),
                 Map.getInstance().getSpeedLimit()
         ));
         return myOnto;
@@ -52,8 +52,8 @@ public class SimulationUtils {
         MyCarUtils.connectPropertiesToMyCar(onto);
 
         //creation class and properties for SWRL about speed
-        PathControlUtils.addClassForSpeedAndGoForwardSWRLRules();
-        PathControlUtils.connectPropertiesForSpeedSWRLRules();
+        SegmentControlUtils.addClassForSpeedAndGoForwardSWRLRules();
+        SegmentControlUtils.connectPropertiesForSpeedSWRLRules();
 
         //set the speed profile and speed limit
         SpeedProfileUtils.addSpeedProfile();
@@ -66,7 +66,7 @@ public class SimulationUtils {
         List<OWLNamedIndividual> routeSequence = new ArrayList<>();
         routeSequence.add(Map.getInstance().getRoadSegmentStart().getLaneRight());
         routeSequence.add(Map.getInstance().getRoadSegmentStop().getLaneRight());
-        PathControlUtils.createPath(ontology, routeSequence);
+        SegmentControlUtils.createPath(ontology, routeSequence);
     }
 
     /** Creates SWRL rule for speedLimit */
@@ -87,7 +87,7 @@ public class SimulationUtils {
         // isRunningOn(?X, ?Lane)
         SWRLObjectPropertyAtom isRunningOn_X_Lane = SWRLUtils.createSWRLObjectPropertyAtom(MyCar.getInstance().getIsRunningOn(), varX, varLane);
         // overSpeedWarningThan(?X, ?Y)
-        SWRLObjectPropertyAtom overSpeedWarningThan_X_Y = SWRLUtils.createSWRLObjectPropertyAtom(PathControl.getInstance().getOverSpeedWarningThan(), varX, varY);
+        SWRLObjectPropertyAtom overSpeedWarningThan_X_Y = SWRLUtils.createSWRLObjectPropertyAtom(SegmentControl.getInstance().getOverSpeedWarningThan(), varX, varY);
 
         // Body's atom: isRunningOn(?X, ?Lane) ^ OneWayLane(?Lane)
         Set<SWRLAtom> body = new HashSet<>();
@@ -121,10 +121,10 @@ public class SimulationUtils {
         // goStraightTo(?lane, ?nextLane)
         SWRLObjectPropertyAtom goStraightTo_Lane_NextLane = SWRLUtils.createSWRLObjectPropertyAtom(Map.getInstance().getGoStraightTo(), varLane, varNextLane);
         // GoForward(?X)
-        SWRLClassAtom GoForward_X = SWRLUtils.createSWRLClassAtom(PathControl.getInstance().getGoForward(), varX);
+        SWRLClassAtom GoForward_X = SWRLUtils.createSWRLClassAtom(SegmentControl.getInstance().getGoForward(), varX);
 
         // nextPathSegment(?lane, ?nextLane)
-        SWRLObjectPropertyAtom nextPathSegment_Lane_NextLane = SWRLUtils.createSWRLObjectPropertyAtom(PathControl.getInstance().getNextPathSegment(), varLane, varNextLane);
+        SWRLObjectPropertyAtom nextPathSegment_Lane_NextLane = SWRLUtils.createSWRLObjectPropertyAtom(SegmentControl.getInstance().getNextPathSegment(), varLane, varNextLane);
 
         // isRunningOn(?X, ?Lane) ^ goStraightTo(?lane, ?nextLane) ^ nextPathSegment(?lane, ?nextLane)
         Set<SWRLAtom> body = new HashSet<>();

@@ -1,16 +1,72 @@
 \chapter{Implementazione}
 
 \section{Modellazione entit\`a}
-\subsection{MyCar}
-\subsection{Control}
-\subsection{Map}
-\subsection{RoadSegment}
-\subsection{SpeedProfile}
-
-\section{Classi di utility}
+Di seguito verr\`a esposto come le varie entit\`a sono state modellate all'interno del progetto.
+Queste vanno a modellare e a inserire nell'ontologia i seguenti concetti:
+\begin{itemize}
+\item il mio veicolo con sistemi ADAS (MyCar);
+\item il percorso del veicolo (Map);
+\item i controlli sui vari segmenti (SegmentControl);
+\item il segmento di strada (RoadSegment);
+\item il profilo della velocit\`a (SpeedProfile).
+\end{itemize}
+\subsection{MyCar + MyCarUtils}
+Attraverso la classe singleton \textit{MyCar} viene modellato il concetto di automobile con sistemi ADAS. \`E stata creata riutilizzando la classe ontologica \textit{MyCar} di \textit{CarOnto} e le propriet\`a \textit{isRunningOn} e \textit{carID} (vedi propriet\`a riutilizzate in CarOnto \ref{propCarOnto}).
+Insieme alla classe \textit{MyCar} \`e stata introdotta anche la relativa classe di utility \textit{MyCarUtils} che permette, attraverso il metodo \textit{addMyCar}, l'aggiunta di un nuovo individual della classe \textit{myCar} all'interno dell'ontologia che rappresenta l'automobile con sistemi ADAS.
+Inoltre, attraverso il metodo \textit{connectPropertiesToMyCar} si aggiunge il data property carID al veicolo e col metodo \textit{setMyCarPositionAndStartRunning} viene assegnata all'auto l'object property \textit{isRunningOn} che specifica che \`e in movimento.
+\subsection{SegmentControl + SegmentControlUtils}
+Attraverso la classe singleton \textit{SegmentControl} viene modellato il concetto di controlli sui vari segmenti di strada. Nello specifico, questi controlli sono inerenti a:
+\begin{itemize}
+\item corsia di inizio e fine percorso, tramite il riutilizzo delle classi \textit{StartLane} ed \textit{EndLane} di \textit{ControlOnto};
+\item direzione della corsa, tramite la classe \textit{GoForward} dato che il percorso modellato non presenter\`a nessuna deviazione;
+\item avvertimento del superamento dei limiti di velocit\`a, attraverso il riutilizzo della classe \textit{OverSpeedWarning}.
+\end{itemize}
+Le proprit\`a riutilizzate saranno \textit{nextPathSegment} e \textit{pathSegmentID} (vedi propriet\`a riutilizzate in ControlOnto \ref{propControlOnto}), pi\`u la nuova object property \textit{overSpeedWarningThan} (\ref{estensione})).
+Insieme alla classe \textit{SegmentControl} \`e stata introdotta anche la relativa classe di utility \textit{SegmentControlUtils} che permette la creazione di una sequenza di segmenti di strada attraverso il metodo \textit{createPath} nella quale si va a stabilire qual \`e la corsia di inizio e quale quella di fine del percorso.
+Ad ogni segmento passatogli in input che andr\`a a comporre la rotta da percorrere verr\`a assegnato il data property \textit{pathSegmentID} e create le varie triple \textit{Segment\_i - nextPathSegment - Segment\_i+1}.
+Infine, verr\`a posizionata la vettura con sistemi ADAS sul primo segmento che andr\`a a comporre il percorso.
+Inoltre, in questa classe di utility sono presenti i metodi \textit{addClassForSpeedAndGoForwardSWRLRules} e \textit{connectPropertiesForSpeedSWRLRules} che aggiungono le classi e propriet\`a per le regole SWRL riguardanti i limiti di velocit\`a e la direzione di guida.
+\subsection{Map + MapUtils}
+Attraverso la classe singleton \textit{Map} viene modellato il concetto di percorso.
+Sono state riutilizzate le classi \textit{RoadSegment}, \textit{OneWayLane}, \textit{SpeedLimit} e delle propriet\`a \textit{hasLane}, \textit{isConnectedTo}, \textit{isLaneOf}, \textit{goStraightTo}, \textit{speedMax} (si vedano le sezioni \ref{riutilizzoclassi} \ref{propMapOnto}).
+Inoltre, tale classe contiene i due segmenti di strada di inizio e fine di tipo \textit{RoadSegment}(sezione \ref{roadsegment}).
+Insieme alla classe \textit{Map} \`e stata introdotta anche la relativa classe di utility \textit{MapUtils} che permette, attraverso il metodo \textit{addRoadSegment}, l'aggiunta due nuovi segmenti di strada: uno di inizio e uno di fine.
+Questi segmenti di strada vengono creati aggiungendo all'ontologia nuovi individual delle classi \textit{RoadSegment} e \textit{OneWayLane} per realizzare un segmento composto da due corsie a senso unico.
+Con il metodo \textit{connectObjectPropertiesToRoadSegment} si va a definire:
+\begin{itemize}
+\item la proprit\`a \textit{hasLane} \`e inversa rispetto a \textit{isLaneOf};
+\item le asserzioni \textit{RoadSegment - hasLane - LaneRight} e \textit{RoadSegment - hasLane - LaneLeft};
+\item l'asserzione \textit{LaneRight of RoadSegmentStart - goStraightTo - LaneRight of RoadSegmentStop}.
+\end{itemize}
+Il metodo \textit{addSpeedLimit} permette l'aggiunta nell'ontologia di un nuovo individual della classe SpeedLimit che rappresenta i limiti di velocit\`a e, attraverso \textit{connectSpeedMaxProperty}, si va ad assegnargli il data property \textit{speedMax} settato a 50, modellando cos\`i un limite di velocit\`a impostato a 50km/h.
+\subsection{RoadSegment}\label{roadsegment}
+RoadSegment \`e una classe che modella un segmento di strada ed \`e composta da tre individual:
+\begin{itemize}
+\item road, il segmento;
+\item laneRight, la corsia di destra di cui il segmento \`e composto;
+\item laneLeft, la corsia di sinistra di cui il segmento \`e composto.
+\end{itemize}
+\subsection{SpeedProfile + SpeedProfileUtils}
+Attraverso la classe singleton SpeedProfile viene modellato il concetto del profilo della velocit\`a che un veicolo pu\`o sostenere, ovvero: accelerazione, decelerazione e velocit\`a costante.
+Vengono riutilizzate le classi \textit{Acceleration}, \textit{ConstantSpeed} e \textit{Deceleration} di \textit{CarOnto} (sezione \ref{riutilizzoclassi}).
+Insieme alla classe \textit{SpeedProfile} \`e stata introdotta anche la relativa classe di utility \textit{SpeedProfileUtils} che permette, attraverso il metodo \textit{addSpeedLimit}, di settare le classi ontologiche dei tre profili di velocit\`a.
+\section{Altre classi di utility}
+Per sviluppare questo progetto sono state create diverse classi di utility tra cui:
+\begin{itemize}
+\item \textit{\textbf{OntologyUtils}} che contiene i diversi metodi per la creazione di un'ontologia OWL e delle sue parti come: la creazione di una nuova ontologia e, data un'ontologia, l'aggiunta di classi, individual, object property, data property, assiomi e cos\`i via;
+\item \textit{\textbf{OWLOntologyUtils}} contiene i vari metodi per la gestione di una determinata ontologia OWL;
+\item \textit{\textbf{SWRLUtils}} contiene i metodi per la creazione di regole, classi, object property e variabili SWRL;
+\item \textit{\textbf{ReasonerUtils}} contiene il metodo per la creazione del reasoner HermiT e i metodi per ricavare la posizione di myCar e i nodi di inizio e fine;
+\item \textit{\textbf{SimulationUtils}} contiene i metodi per la creazione della simulazione che verr\`a approfondita nella sezione seguente;
+\item \textit{\textbf{IRIs}} contiene i vari IRI utilizzati all'interno del progetto;
+\end{itemize}
 
 \section{La simulazione}
+La simulazione consiste nella creazione di una strada a due corsie a senso unico nella quale viene posizione un veicolo.
+Questo veicolo viene modellato in modo tale da non superare i limiti di velocit\`a impostati arbitrariamente a 50km/h.
 \subsection{Creazione strada}
+Per la simulazione viene creata una strada composta da due segmenti (individualRoadSegment1 e individualRoadSegment2) entrambe con due corsie a senso unico.
+Per far ci\`o viene utilizzato il metodo addRoadSegment di MapUtil che aggiunge all'istanza della mappa stradale 
 \subsection{Creazione automobile}
 \subsection{Aggiunta dei limiti stradali}
 \subsection{Test dei limiti stradali}

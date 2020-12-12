@@ -4,7 +4,7 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 
-public class PathControl {
+public class SegmentControl {
     // Path > PathSegment > LaneSegment
     private OWLClass startLane;
     private OWLClass endLane;
@@ -24,10 +24,10 @@ public class PathControl {
     private OWLObjectProperty nextPathSegment;
     private OWLDataProperty pathSegmentID;
 
-    private static PathControl pathControlOnto = null;
+    private static SegmentControl segmentControlOnto = null;
 
-    public static PathControl getInstance() {
-        return (pathControlOnto == null) ? pathControlOnto = new PathControl() : pathControlOnto;
+    public static SegmentControl getInstance() {
+        return (segmentControlOnto == null) ? segmentControlOnto = new SegmentControl() : segmentControlOnto;
     }
 
     public OWLClass getStartLane() {
