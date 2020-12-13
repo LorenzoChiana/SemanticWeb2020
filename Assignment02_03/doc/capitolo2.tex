@@ -105,37 +105,37 @@ Di seguito verranno mostrare le object property e le data property presenti nell
 \section{Classi riutilizzate}\label{riutilizzoclassi}
 Di seguito esporrò le classi utilizzate nel progetto.
 
-\textbf{CarOnto}\\
+\subsection*{CarOnto}\label{carontoclass}
 Per modellare il concetto di autoveicolo con sistemi ADAS si è utilizzata la classe \textit{MyCar} anziché \textit{Car}, entrambe sottoclassi di \textit{PassengerCar}.
-Poiché \textit{MyCar} è stata creata con l'intendo di dar la possibilità di modellare specifici modelli ai autoveicoli di qualsiasi casa automobilistica si è scelta questa classe anziché quella più generica per rendere il progetto riutilizzabile per un eventuale sviluppo futuro.
+Poiché \textit{MyCar} è stata creata con l'intento di dar la possibilità di modellare specifici modelli ai autoveicoli di qualsiasi casa automobilistica si è scelta questa classe anziché quella più generica per rendere il progetto riutilizzabile per un eventuale sviluppo futuro.
 Dato che vi è l'esigenza di gestire la velocità in relazione ai limiti imposti per legge nel progetto viene, inoltre, utilizzata la classe \textit{SpeedProfile} con le relative sottoclassi \textit{Acceleration}, \textit{ConstantSpeed} e \textit{Deceleration}.
 
-\textbf{ControlOnto}\\
-Per modellare e creare uno scenario dove l'auto percorre una determinato percorso su una carreggiata serviranno le classi \textit{startLane} e \textit{endLane} per determinare dove iniziare e dove finire la simulazione.
-Inoltre, servirà la classe \textit{overSpeedWarning} per modellare l'avviso di superamento dei limiti di velocità.
+\subsection*{ControlOnto}\label{controlontoclass}
+Per modellare e creare uno scenario dove l'auto percorre una determinato percorso su una carreggiata serviranno le classi \textit{StartLane} e \textit{EndLane} per determinare dove iniziare e dove finire la simulazione.
+Inoltre, servirà la classe \textit{OverSpeedWarning} per modellare l'avviso di superamento dei limiti di velocità.
 
-\textbf{MapOnto}\\
-Per questo progetto serviranno: la classe \textit{roadSegment} per modellare il percorso della simulazione; \textit{oneWayLane} per modellare una corsia a senso unico; \textit{speedLimit} per modellare il limite di velocità.
+\subsection*{MapOnto}\label{mapontoclass}
+Per questo progetto serviranno: la classe \textit{RoadSegment} per modellare il percorso della simulazione; \textit{OneWayLane} per modellare una corsia a senso unico; \textit{SpeedLimit} per modellare il limite di velocità.
 
-\section{Proprietà utilizzate}
+\section{Proprietà riutilizzate}
 Di seguito esporrò le proprietà utilizzate nel progetto.
 
-\subsection{CarOnto}\label{propCarOnto}
+\subsection*{CarOnto}\label{propCarOnto}
 L'object property \textit{isRunningOn} è venuta in aiuto per sapere su che segmento di strada si trova l'autoveicolo.
 La data property \textit{carID}, invece, è stata utilizzata per dare un identificativo al veicolo, utile per un eventuale sviluppo futuro del progetto nel quale saranno gestiti più veicoli alla volta.
 
-\subsection{ControlOnto}\label{propControlOnto}
-Dato che si vuole modellare la carreggiata come una sequenza di segmenti di strada (\textit{PathSegment} classe madre di \textit{LaneSegment}), si dovrà utilizzare l'object property \textit{nextPathSegment} per creare la sequenza di segmenti.
+\subsection*{ControlOnto}\label{propControlOnto}
+Dato che si vuole modellare la carreggiata come una sequenza di segmenti di strada, si dovrà utilizzare l'object property \textit{nextPathSegment} per creare tale sequenza.
 Inoltre, si avrà la necessità di assegnare un identificativo ad ognuno di questi segmenti, a ciò viene in aiuto la data property \textit{pathSegmentID}.
 
-\subsection{MapOnto}\label{propMapOnto}
+\subsection*{MapOnto}\label{propMapOnto}
 Per la modellazione di una carreggiata a più corsie serviranno gli object properties \textit{hasLane} e \textit{isLaneOf}.
 Per definire il limite di velocità bisognerà usare la data property \textit{speedMax}.
 
 \section{Estensione}\label{estensione}
 Durante l'analisi delle ontologie precedentemente viste si è notato la mancanza di una proprietà importante nell'ontologia di controllo: \textit{overSpeedWarningThan}.
 L'idea di questa nuova Object Property in ControlOnto è nata analizzando tale ontologia e notando che \textit{CollisionWarning} è l'unica sottoclasse di \textit{Warning} ad avere una proprietà che la descrive.
-Tale proprietà (\textit{collisionWarningWith}) delinea con chi/che cosa il soggetto sta per collidere.
+Tale proprietà (\textit{collisionWarningWith}) delinea con chi/che cosa il soggetto stia per collidere.
 Con \textit{overSpeedWarningThan} si intende delineare quale limite di velocità si sta per violare.
 In ottica RDF sarà il predicato tra il veicolo (soggetto) e il limite di velocità (oggetto), si veda Figura \ref{fig:triplaRDF}.
 
