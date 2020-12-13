@@ -54,7 +54,7 @@ Insieme alla classe \textit{SpeedProfile} \`e stata introdotta anche la relativa
 Per sviluppare questo progetto sono state create diverse classi di utility tra cui:
 \begin{itemize}
 \item \textit{\textbf{OntologyUtils}} che contiene i diversi metodi per la creazione di un'ontologia OWL e delle sue parti come: la creazione di una nuova ontologia e, data un'ontologia, l'aggiunta di classi, individual, object property, data property, assiomi e cos\`i via;
-\item \textit{\textbf{OWLOntologyUtils}} contiene i vari metodi per la gestione di una determinata ontologia OWL;
+\item \textit{\textbf{OWLOntologyUtils}} che contiene vari metodi per la gestione di un'ontologia OWL quali: l'aggiunta e la rimozione di assiomi, l'importazione di ontologie remote o ottenere il data factory dell'ontologia che pu\`o essere utilizzata in seguito per creare oggetti OWLAPI come classi, propriet\`a, individual, assiomi ecc.
 \item \textit{\textbf{SWRLUtils}} contiene i metodi per la creazione di regole, classi, object property e variabili SWRL;
 \item \textit{\textbf{ReasonerUtils}} contiene il metodo per la creazione del reasoner HermiT e i metodi per ricavare la posizione di myCar e i nodi di inizio e fine;
 \item \textit{\textbf{SimulationUtils}} contiene i metodi per la creazione della simulazione che verr\`a approfondita nella sezione seguente;
@@ -78,20 +78,17 @@ per la gestione del profilo di velocit\`a quando viene segnalato l'avviso di ecc
 \emph{isRunningOn(?X, ?Lane) $\char`\^$ OneWayLane(?Lane) $\rightarrow$ acceleration(?X)}\\
 \end{center}
 invece nel caso in cui non venga segnalato l'eccesso dei limiti.
-\subsection{Test dei limiti stradali}
-\`E stata creata la classe di test \textit{SpeedLimitTest} nella quale sono stati implementati due differenti test:
+
+Infine, \`e stata creata la classe di test \textit{SpeedLimitTest} nella quale sono stati implementati due differenti test:
 \begin{enumerate}
 \item test della simulazione senza avviso del superamento dei limiti;
 \item test della simulazione con avviso del superamento dei limiti.
 \end{enumerate}
-Nel primo caso il reasoner va a controllare se 
 \subsection{Regole SWRL per la gestione della direzione}\label{SWRLrundirection}
 All'interno del metodo \textit{createRunDirectionRule} viene implementata la regola generale per la gestione della direzione del veicolo che, in questo caso specifico, sar\`a quella di proseguire dritto.
 Tale regola \`e:
 \begin{center}
 isRunningOn(?X, ?Lane) $\char`\^$ goStraightTo(?Lane, ?NextLane) $\char`\^$ nextPathSegment(?Lane, ?NextLane) $\rightarrow$ GoForward(?X)
 \end{center}
-\subsection{Test della direzione}
 
-\section{Consistenza ontologia}
-
+Infine, \`e stata creata la classe test \textit{GoForwardTest} che va a controllare la direzione dell'avanzamento dell'automobile e che i nodi di inizio e fine combacino rispettivamente con i segmenti di strada di inizio e fine. 

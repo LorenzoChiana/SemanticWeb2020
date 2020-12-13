@@ -20,18 +20,6 @@ public class ReasonerUtils {
         return new ReasonerFactory().createReasoner(ontology);
     }
 
-    /** Gets the position of car
-     *
-     * @param reasoner the reasoner instance
-     * @return the car position
-     */
-    public static NodeSet<OWLNamedIndividual> getMyCarPosition(OWLReasoner reasoner) {
-        return reasoner.getObjectPropertyValues(
-                MyCar.getInstance().getMyCarIndividual(),
-                MyCar.getInstance().getIsRunningOn()
-        );
-    }
-
     /** Gets the start node
      *
      * @param reasoner the reasoner instance
@@ -39,10 +27,6 @@ public class ReasonerUtils {
      */
     public static NodeSet<OWLNamedIndividual> getStartNode(OWLReasoner reasoner) {
         return reasoner.getInstances(SegmentControl.getInstance().getStartLane());
-    }
-
-    public static NodeSet<OWLNamedIndividual> where(OWLReasoner reasoner) {
-        return reasoner.getInstances(SegmentControl.getInstance().getGoForward());
     }
 
     /** Gets the end node
