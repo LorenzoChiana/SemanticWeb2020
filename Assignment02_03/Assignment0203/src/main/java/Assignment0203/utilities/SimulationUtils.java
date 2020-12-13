@@ -17,7 +17,7 @@ public class SimulationUtils {
         OWLOntologyUtils myOnto = SimulationUtils.createMyOntology();
         initClasses(myOnto);
         createMyCarRoute(myOnto);
-        createRunDirectionRule(myOnto);
+        createRunDirectionSWRLRule(myOnto);
         createSpeedLimitSWRLRule(myOnto, speedWarning);
         myOnto.addAxiom(OntologyUtils.createObjectPropertyAssertionAxiom(
                 MyCar.getInstance().getMyCarIndividual(),
@@ -108,7 +108,7 @@ public class SimulationUtils {
     }
 
     /** Created SWRL rule for run direction */
-    public static void createRunDirectionRule(OWLOntologyUtils ontology) {
+    public static void createRunDirectionSWRLRule(OWLOntologyUtils ontology) {
         SWRLVariable varX = SWRLUtils.createSWRLVariable(varXIRI);
         SWRLVariable varLane = SWRLUtils.createSWRLVariable(varLaneIRI);
         SWRLVariable varNextLane = SWRLUtils.createSWRLVariable(varNextLaneIRI);
