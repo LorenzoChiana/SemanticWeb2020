@@ -1,6 +1,5 @@
 import Assignment0203.Map;
 import Assignment0203.MyCar;
-import Assignment0203.SegmentControl;
 import Assignment0203.utilities.OWLOntologyUtils;
 import Assignment0203.utilities.ReasonerUtils;
 import Assignment0203.utilities.SimulationUtils;
@@ -16,7 +15,7 @@ public class GoForwardTest {
         OWLReasoner reasoner = ReasonerUtils.newReasoner(onto.getOntology());
 
         assertTrue("myCar must go forward.",
-                reasoner.getInstances(SegmentControl.getInstance().getGoForward()).containsEntity(MyCar.getInstance().getMyCarIndividual()));
+                ReasonerUtils.getGoForward(reasoner).containsEntity(MyCar.getInstance().getMyCarIndividual()));
 
         assertTrue("StartNode must be the right lane of segment start",
                 ReasonerUtils.getStartNode(reasoner).containsEntity(Map.getInstance().getRoadSegmentStart().getLaneRight()));

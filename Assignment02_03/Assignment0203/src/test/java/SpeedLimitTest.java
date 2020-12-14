@@ -1,5 +1,4 @@
 import Assignment0203.MyCar;
-import Assignment0203.SpeedProfile;
 import Assignment0203.utilities.OWLOntologyUtils;
 import Assignment0203.utilities.ReasonerUtils;
 import Assignment0203.utilities.SimulationUtils;
@@ -15,10 +14,10 @@ public class SpeedLimitTest {
         OWLReasoner reasoner = ReasonerUtils.newReasoner(onto.getOntology());
 
         assertFalse("MyCar must run with a constant speed.",
-                reasoner.getInstances(SpeedProfile.getInstance().getConstantSpeed()).containsEntity(MyCar.getInstance().getMyCarIndividual()));
+                ReasonerUtils.getConstantSpeed(reasoner).containsEntity(MyCar.getInstance().getMyCarIndividual()));
 
         assertTrue("MyCar must run with an accelerate speed.",
-                reasoner.getInstances(SpeedProfile.getInstance().getAcceleration()).containsEntity(MyCar.getInstance().getMyCarIndividual()));
+                ReasonerUtils.getAcceleration(reasoner).containsEntity(MyCar.getInstance().getMyCarIndividual()));
 
         reasoner.dispose();
     }
@@ -29,11 +28,11 @@ public class SpeedLimitTest {
         OWLReasoner reasoner = ReasonerUtils.newReasoner(onto.getOntology());
 
        assertTrue("MyCar must run with a constant speed.",
-                reasoner.getInstances(SpeedProfile.getInstance().getConstantSpeed()).containsEntity(MyCar.getInstance().getMyCarIndividual()));
+               ReasonerUtils.getConstantSpeed(reasoner).containsEntity(MyCar.getInstance().getMyCarIndividual()));
 
-        assertFalse("MyCar must run with an accelerate speed.",
-                reasoner.getInstances(SpeedProfile.getInstance().getAcceleration()).containsEntity(MyCar.getInstance().getMyCarIndividual()));
+       assertFalse("MyCar must run with an accelerate speed.",
+               ReasonerUtils.getAcceleration(reasoner).containsEntity(MyCar.getInstance().getMyCarIndividual()));
 
-        reasoner.dispose();
+       reasoner.dispose();
     }
 }
