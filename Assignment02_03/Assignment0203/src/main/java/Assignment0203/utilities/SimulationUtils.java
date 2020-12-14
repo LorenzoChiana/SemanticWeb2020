@@ -16,7 +16,7 @@ public class SimulationUtils {
     public static OWLOntologyUtils createSimulation(boolean speedWarning) {
         OWLOntologyUtils myOnto = SimulationUtils.createMyOntology();
         initClasses(myOnto);
-        createMyCarRoute(myOnto);
+        SegmentControlUtils.createPath(myOnto);
         createRunDirectionSWRLRule(myOnto);
         createSpeedLimitSWRLRule(myOnto, speedWarning);
         myOnto.addAxiom(OntologyUtils.createObjectPropertyAssertionAxiom(
@@ -59,14 +59,6 @@ public class SimulationUtils {
         SpeedProfileUtils.addSpeedProfile();
         MapUtils.addSpeedLimit();
         MapUtils.connectSpeedMaxProperty(onto);
-    }
-
-    /** Creates new route */
-    private static void createMyCarRoute(OWLOntologyUtils ontology) {
-        List<OWLNamedIndividual> routeSequence = new ArrayList<>();
-        routeSequence.add(Map.getInstance().getRoadSegmentStart().getLaneRight());
-        routeSequence.add(Map.getInstance().getRoadSegmentStop().getLaneRight());
-        SegmentControlUtils.createPath(ontology, routeSequence);
     }
 
     /** Creates SWRL rule for speedLimit */

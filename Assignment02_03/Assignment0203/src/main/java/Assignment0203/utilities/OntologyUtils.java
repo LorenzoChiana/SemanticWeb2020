@@ -32,10 +32,6 @@ public class OntologyUtils {
        return ontology.getDataFactory().getOWLNamedIndividual(individualIRI);
     }
 
-    public static OWLNamedIndividual createIndividual(IRI individualIRI) {
-        return createIndividual(getOntology(), individualIRI);
-    }
-
     public static OWLObjectProperty createObjectProperty(OWLOntologyUtils ontology, IRI objectPropertyIRI) {
         return ontology.getDataFactory().getOWLObjectProperty(objectPropertyIRI);
     }

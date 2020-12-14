@@ -21,7 +21,6 @@ public class Map {
 
     //Object properties
     private OWLObjectProperty hasLane;
-    private OWLObjectProperty isConnectedTo;
     private OWLObjectProperty isLaneOf;
     private OWLObjectProperty goStraightTo;
 
@@ -72,14 +71,6 @@ public class Map {
 
     public void setHasLane(OWLObjectProperty hasLane) {
         this.hasLane = hasLane;
-    }
-
-    public OWLObjectProperty getIsConnectedTo() {
-        return isConnectedTo;
-    }
-
-    public void setIsConnectedTo(OWLObjectProperty isConnectedTo) {
-        this.isConnectedTo = isConnectedTo;
     }
 
     public OWLObjectProperty getIsLaneOf() {
